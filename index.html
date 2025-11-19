@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>智创电子工程社 | 智能硬件与创新研究</title>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --secondary: #1e40af;
+            --accent: #3b82f6;
+            --light: #f1f5f9;
+            --dark: #1e293b;
+            --success: #10b981;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f8fafc;
+            color: var(--dark);
+            line-height: 1.6;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 1.5rem 0;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 1rem;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .logo span {
+            color: var(--accent);
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .nav-links a:hover {
+            color: var(--light);
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--accent);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
+        .hero {
+            text-align: center;
+            padding: 4rem 0;
+            background-color: var(--light);
+            border-radius: 12px;
+            margin: 2rem 0;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+        
+        .hero h1 {
+            font-size: 2.8rem;
+            margin-bottom: 1rem;
+            color: var(--secondary);
+        }
+        
+        .hero p {
+            font-size: 1.3rem;
+            color: var(--dark);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--primary);
+            color: white;
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 1.5rem;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+        
+        .btn:hover {
+            background-color: var(--secondary);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px -5px rgba(37, 99, 235, 0.3);
+        }
+        
+        .section-title {
+            text-align: center;
+            margin: 3rem 0 2rem;
+            font-size: 2.2rem;
+            color: var(--secondary);
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background-color: var(--accent);
+            margin: 0.5rem auto;
+            border-radius: 2px;
+        }
+        
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+        
+        .project-card {
+            background-color: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+        
+        .project-image {
+            height: 200px;
+            width: 100%;
+            object-fit: cover;
+            background-color: #e0e7ff;
+        }
+        
+        .project-content {
+            padding: 1.5rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .project-title {
+            font-size: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: var(--secondary);
+        }
+        
+        .project-category {
+            display: inline-block;
+            background-color: #dbeafe;
+            color: var(--primary);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+        
+        .project-description {
+            color: #64748b;
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+        }
+        
+        .project-link {
+            display: flex;
+            align-items: center;
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: auto;
+            transition: color 0.3s ease;
+        }
+        
+        .project-link:hover {
+            color: var(--accent);
+        }
+        
+        .project-link svg {
+            margin-left: 0.5rem;
+            transition: transform 0.3s ease;
+        }
+        
+        .project-link:hover svg {
+            transform: translateX(3px);
+        }
+        
+        .team-section {
+            background-color: var(--primary);
+            color: white;
+            padding: 4rem 0;
+            text-align: center;
+            border-radius: 12px;
+            margin: 3rem 0;
+        }
+        
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .team-member {
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 1.5rem;
+            border-radius: 12px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .member-image {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 0 auto 1rem;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+        }
+        
+        .member-name {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        
+        .member-role {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+        
+        .contact-section {
+            text-align: center;
+            padding: 4rem 0;
+            margin: 3rem 0;
+        }
+        
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .contact-item {
+            background-color: var(--light);
+            padding: 1.5rem;
+            border-radius: 12px;
+            min-width: 200px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+        
+        .contact-icon {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+        
+        .contact-title {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: var(--dark);
+        }
+        
+        .contact-text {
+            color: #64748b;
+        }
+        
+        footer {
+            background-color: var(--dark);
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 3rem;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin: 1.5rem 0;
+        }
+        
+        .footer-links a {
+            color: #cbd5e1;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-links a:hover {
+            color: var(--accent);
+        }
+        
+        .copyright {
+            color: #94a3b8;
+            font-size: 0.9rem;
+        }
+        
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .contact-info {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">智创<span>电子</span></div>
+                <div class="nav-links">
+                    <a href="#home">首页</a>
+                    <a href="#projects">研究成果</a>
+                    <a href="#team">团队成员</a>
+                    <a href="#contact">联系我们</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <section id="home" class="hero">
+        <div class="container">
+            <h1>智创电子工程社</h1>
+            <p>探索电子工程的无限可能，从电路设计到智能系统，我们用创新改变未来</p>
+            <a href="#projects" class="btn">查看最新研究</a>
+        </div>
+    </section>
+
+    <section id="projects" class="container">
+        <h2 class="section-title">最新研究成果</h2>
+        <div class="projects-grid">
+            <div class="project-card">
+                <div class="project-image" style="background-image: url('https://placehold.co/400x200/3b82f6/ffffff?text=智能护膝系统');"></div>
+                <div class="project-content">
+                    <h3 class="project-title">基于多传感器融合的智能护膝系统</h3>
+                    <span class="project-category">可穿戴设备</span>
+                    <p class="project-description">本项目开发了一款集成IMU、压力传感器和弯曲传感器的智能护膝，可实时监测膝关节运动角度、压力分布和活动范围，并通过微型电机实现动态支撑调节，有效预防运动损伤。</p>
+                    <a href="#" class="project-link">查看详情 <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-image" style="background-image: url('https://placehold.co/400x200/10b981/ffffff?text=物联网环境监测');"></div>
+                <div class="project-content">
+                    <h3 class="project-title">基于ESP32的多参数环境监测系统</h3>
+                    <span class="project-category">物联网</span>
+                    <p class="project-description">构建了一套低成本、低功耗的环境监测节点，可同时采集温度、湿度、PM2.5、CO₂和光照强度数据，通过LoRa无线传输至云端平台，实现校园环境的实时监控与预警。</p>
+                    <a href="#" class="project-link">查看详情 <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-image" style="background-image: url('https://placehold.co/400x200/f59e0b/ffffff?text=AI视觉识别');"></div>
+                <div class="project-content">
+                    <h3 class="project-title">基于边缘计算的实时手势识别系统</h3>
+                    <span class="project-category">人工智能</span>
+                    <p class="project-description">利用树莓派4B和摄像头模块，开发了轻量级CNN模型，实现在本地设备上以25FPS速度识别10种手部姿态，可用于无障碍交互和智能家居控制，功耗低于传统云方案80%。</p>
+                    <a href="#" class="project-link">查看详情 <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-image" style="background-image: url('https://placehold.co/400x200/8b5cf6/ffffff?text=智能充电站');"></div>
+                <div class="project-content">
+                    <h3 class="project-title">太阳能驱动的智能电动车充电站</h3>
+                    <span class="project-category">能源系统</span>
+                    <p class="project-description">设计了一套集成光伏板、锂电池储能和智能充电管理系统的户外充电站，支持多协议充电（Qi、USB-C、DC），通过手机APP实现远程监控和预约充电，提高能源利用效率。</p>
+                    <a href="#" class="project-link">查看详情 <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-image" style="background-image: url('https://placehold.co/400x200/ef4444/ffffff?text=脑机接口原型');"></div>
+                <div class="project-content">
+                    <h3 class="project-title">基于EEG的简易脑机接口控制系统</h3>
+                    <span class="project-category">生物电子</span>
+                    <p class="project-description">采用OpenBCI开发板采集脑电信号，通过机器学习算法识别专注状态与放松状态，实现通过意念控制LED灯亮度变化，为神经科学教育提供实践平台。</p>
+                    <a href="#" class="project-link">查看详情 <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-image" style="background-image: url('https://placehold.co/400x200/06b6d4/ffffff?text=无人机编队');"></div>
+                <div class="project-content">
+                    <h3 class="project-title">基于STM32的多无人机协同编队系统</h3>
+                    <span class="project-category">嵌入式系统</span>
+                    <p class="project-description">开发了多台无人机之间的无线通信协议与协同控制算法，实现基于GPS的编队飞行、自动避障和路径规划，为未来物流与搜救应用提供技术验证。</p>
+                    <a href="#" class="project-link">查看详情 <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="team-section">
+        <div class="container">
+            <h2 class="section-title">我们的团队</h2>
+            <p>由15名来自不同年级的电子工程爱好者组成，涵盖硬件设计、软件开发、系统集成等专业方向</p>
+            <div class="team-grid">
+                <div class="team-member">
+                    <img src="https://placehold.co/120x120/3b82f6/ffffff?text=张" alt="张伟" class="member-image">
+                    <h4 class="member-name">张伟</h4>
+                    <p class="member-role">硬件设计组长</p>
+                </div>
+                <div class="team-member">
+                    <img src="https://placehold.co/120x120/10b981/ffffff?text=李" alt="李娜" class="member-image">
+                    <h4 class="member-name">李娜</h4>
+                    <p class="member-role">嵌入式开发</p>
+                </div>
+                <div class="team-member">
+                    <img src="https://placehold.co/120x120/f59e0b/ffffff?text=王" alt="王浩" class="member-image">
+                    <h4 class="member-name">王浩</h4>
+                    <p class="member-role">AI算法工程师</p>
+                </div>
+                <div class="team-member">
+                    <img src="https://placehold.co/120x120/8b5cf6/ffffff?text=陈" alt="陈思" class="member-image">
+                    <h4 class="member-name">陈思</h4>
+                    <p class="member-role">项目管理</p>
+                </div>
+                <div class="team-member">
+                    <img src="https://placehold.co/120x120/ef4444/ffffff?text=刘" alt="刘洋" class="member-image">
+                    <h4 class="member-name">刘洋</h4>
+                    <p class="member-role">PCB设计</p>
+                </div>
+                <div class="team-member">
+                    <img src="https://placehold.co/120x120/06b6d4/ffffff?text=赵" alt="赵敏" class="member-image">
+                    <h4 class="member-name">赵敏</h4>
+                    <p class="member-role">系统测试</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact-section">
+        <div class="container">
+            <h2 class="section-title">加入我们</h2>
+            <p>无论你是电子工程爱好者，还是对智能硬件充满热情，我们都欢迎你的加入！</p>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <h3 class="contact-title">邮箱联系</h3>
+                    <p class="contact-text">research@zhi-chuang.org</p>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-calendar-alt"></i>
+                    </div>
+                    <h3 class="contact-title">招新时间</h3>
+                    <p class="contact-text">每学期初开放申请</p>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <h3 class="contact-title">实验室地址</h3>
+                    <p class="contact-text">科技楼B座302电子创新实验室</p>
+                </div>
+            </div>
+            <a href="#" class="btn" style="margin-top: 2rem;">申请加入</a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="logo" style="justify-content: center; margin-bottom: 1rem;">
+                智创<span>电子</span>
+            </div>
+            <p>探索科技边界，创造智能未来</p>
+            <div class="footer-links">
+                <a href="#">关于我们</a>
+                <a href="#">研究成果</a>
+                <a href="#">项目申请</a>
+                <a href="#">联系我们</a>
+                <a href="#">隐私政策</a>
+            </div>
+            <p class="copyright">© 2025 智创电子工程社. 保留所有权利.</p>
+        </div>
+    </footer>
+</body>
+</html>
+
