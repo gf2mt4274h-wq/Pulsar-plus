@@ -1,62 +1,164 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>智创电子工程社 | 智能硬件与创新研究</title>
+    <title>NexTech Electronics Lab | Innovation in Engineering</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #2563eb;
-            --secondary: #1e40af;
-            --accent: #3b82f6;
+            --primary: #0ea5e9;
+            --secondary: #0284c7;
+            --accent: #22d3ee;
             --light: #f1f5f9;
-            --dark: #1e293b;
+            --dark: #0a0a0a;
+            --darker: #050505;
+            --gray: #111111;
+            --light-gray: #1e1e1e;
+            --cyan: #06b6d4;
+            --blue: #0ea5e9;
             --success: #10b981;
+            --warning: #f59e0b;
+            --danger: #ef4444;
+            --text-primary: #e2e8f0;
+            --text-secondary: #94a3b8;
+            --border: #2d2d2d;
+            --shadow: rgba(6, 182, 212, 0.15);
+            --shadow-strong: rgba(6, 182, 212, 0.3);
+            --glow: 0 0 15px rgba(6, 182, 212, 0.4);
         }
         
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
         
         body {
-            background-color: #f8fafc;
-            color: var(--dark);
+            background: linear-gradient(135deg, var(--darker), var(--dark));
+            color: var(--text-primary);
             line-height: 1.6;
+            min-height: 100vh;
+            overflow-x: hidden;
+            font-family: 'Montserrat', sans-serif;
+            position: relative;
         }
         
-        header {
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            color: white;
-            padding: 1.5rem 0;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(6, 182, 212, 0.05) 0%, transparent 20%),
+                radial-gradient(circle at 90% 80%, rgba(14, 165, 233, 0.05) 0%, transparent 20%);
+            z-index: -1;
+        }
+        
+        .grid-pattern {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(rgba(0, 0, 0, 0.15) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 0, 0, 0.15) 1px, transparent 1px);
+            background-size: 40px 40px;
+            z-index: -1;
+            opacity: 0.4;
+        }
+        
+        .scanline {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                to bottom,
+                transparent 0%,
+                rgba(0, 255, 255, 0.03) 50%,
+                transparent 100%
+            );
+            animation: scanline 8s linear infinite;
+            pointer-events: none;
+            z-index: -1;
+        }
+        
+        @keyframes scanline {
+            0% {
+                background-position: 0 0;
+            }
+            100% {
+                background-position: 0 100vh;
+            }
         }
         
         .container {
             width: 90%;
             max-width: 1200px;
             margin: 0 auto;
+            padding: 0 15px;
         }
         
-        nav {
+        /* Header Styles */
+        header {
+            background: rgba(10, 10, 10, 0.9);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 1rem 0;
+        }
+        
+        .header-content {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-top: 1rem;
         }
         
         .logo {
-            font-size: 1.8rem;
-            font-weight: 700;
             display: flex;
             align-items: center;
-            gap: 0.5rem;
+            gap: 12px;
         }
         
-        .logo span {
-            color: var(--accent);
+        .logo-icon {
+            width: 42px;
+            height: 42px;
+            background: linear-gradient(135deg, var(--cyan), var(--blue));
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.3rem;
+            color: white;
+            box-shadow: var(--glow);
+        }
+        
+        .logo-text {
+            font-size: 1.6rem;
+            font-weight: 700;
+            font-family: 'Orbitron', sans-serif;
+            background: linear-gradient(to right, var(--cyan), var(--blue));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .logo-subtext {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            margin-top: -2px;
+            font-family: 'Montserrat', sans-serif;
         }
         
         .nav-links {
@@ -65,291 +167,866 @@
         }
         
         .nav-links a {
-            color: white;
+            color: var(--text-secondary);
             text-decoration: none;
             font-weight: 500;
-            transition: all 0.3s ease;
+            font-family: 'Montserrat', sans-serif;
             position: relative;
+            padding: 0.5rem 0;
+            transition: all 0.3s ease;
         }
         
-        .nav-links a:hover {
-            color: var(--light);
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--cyan);
         }
         
         .nav-links a::after {
             content: '';
             position: absolute;
-            bottom: -5px;
+            bottom: 0;
             left: 0;
             width: 0;
             height: 2px;
-            background-color: var(--accent);
+            background: linear-gradient(to right, var(--cyan), var(--blue));
             transition: width 0.3s ease;
         }
         
-        .nav-links a:hover::after {
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
             width: 100%;
         }
         
-        .hero {
-            text-align: center;
-            padding: 4rem 0;
-            background-color: var(--light);
-            border-radius: 12px;
-            margin: 2rem 0;
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-        }
-        
-        .hero h1 {
-            font-size: 2.8rem;
-            margin-bottom: 1rem;
-            color: var(--secondary);
-        }
-        
-        .hero p {
-            font-size: 1.3rem;
-            color: var(--dark);
-            max-width: 800px;
-            margin: 0 auto;
+        .auth-buttons {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
         }
         
         .btn {
             display: inline-block;
-            background-color: var(--primary);
-            color: white;
-            padding: 0.8rem 2rem;
+            padding: 0.6rem 1.5rem;
             border-radius: 50px;
             text-decoration: none;
             font-weight: 600;
-            margin-top: 1.5rem;
+            cursor: pointer;
             transition: all 0.3s ease;
             border: none;
-            cursor: pointer;
             font-size: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-family: 'Montserrat', sans-serif;
         }
         
-        .btn:hover {
-            background-color: var(--secondary);
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px -5px rgba(37, 99, 235, 0.3);
+        .btn-primary {
+            background: linear-gradient(135deg, var(--cyan), var(--blue));
+            color: white;
+            box-shadow: var(--glow);
         }
         
-        .section-title {
-            text-align: center;
-            margin: 3rem 0 2rem;
-            font-size: 2.2rem;
-            color: var(--secondary);
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0 20px rgba(6, 182, 212, 0.6);
+        }
+        
+        .btn-outline {
+            background: transparent;
+            border: 1.5px solid var(--border);
+            color: var(--text-primary);
+        }
+        
+        .btn-outline:hover {
+            background: rgba(30, 41, 59, 0.3);
+            border-color: var(--cyan);
+        }
+        
+        .user-avatar {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--cyan), var(--blue));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: white;
+            cursor: pointer;
             position: relative;
         }
         
-        .section-title::after {
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 10rem 0 5rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 10;
+        }
+        
+        .hero-badge {
+            display: inline-block;
+            padding: 0.3rem 1rem;
+            background: rgba(14, 165, 233, 0.15);
+            border: 1px solid var(--border);
+            border-radius: 50px;
+            margin-bottom: 1.5rem;
+            font-weight: 500;
+            color: var(--cyan);
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            font-family: 'Orbitron', sans-serif;
+            line-height: 1.2;
+            background: linear-gradient(to right, #fff, var(--cyan));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .hero p {
+            font-size: 1.3rem;
+            color: var(--text-secondary);
+            margin-bottom: 2.5rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 2rem;
+        }
+        
+        .quick-access {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            max-width: 1000px;
+            margin: 4rem auto 0;
+            padding: 2rem;
+        }
+        
+        .quick-access-card {
+            background: rgba(20, 20, 20, 0.7);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 1.5rem;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .quick-access-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--cyan);
+            background: rgba(10, 30, 40, 0.8);
+        }
+        
+        .quick-access-card::before {
             content: '';
-            display: block;
-            width: 80px;
-            height: 4px;
-            background-color: var(--accent);
-            margin: 0.5rem auto;
-            border-radius: 2px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(6, 182, 212, 0.1), transparent);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .quick-access-card:hover::before {
+            opacity: 1;
+        }
+        
+        .card-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--cyan), var(--blue));
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.2rem;
+            font-size: 1.8rem;
+            color: white;
+            box-shadow: var(--glow);
+        }
+        
+        .quick-access-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: white;
+        }
+        
+        .quick-access-card p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+        
+        /* Research Projects Section */
+        .section-header {
+            text-align: center;
+            margin-bottom: 3.5rem;
+        }
+        
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            font-family: 'Orbitron', sans-serif;
+            background: linear-gradient(to right, var(--cyan), var(--blue));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .section-subtitle {
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin: 0 auto;
+            font-size: 1.1rem;
         }
         
         .projects-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
             margin-bottom: 4rem;
         }
         
         .project-card {
-            background-color: white;
-            border-radius: 12px;
+            background: rgba(20, 20, 20, 0.8);
+            border: 1px solid var(--border);
+            border-radius: 16px;
             overflow: hidden;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
             transition: all 0.3s ease;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
+            position: relative;
+            backdrop-filter: blur(5px);
         }
         
         .project-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+            transform: translateY(-5px);
+            border-color: var(--cyan);
+            box-shadow: 0 20px 30px rgba(0, 0, 0, 0.3);
         }
         
-        .project-image {
+        .project-images {
             height: 200px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .project-images img {
             width: 100%;
+            height: 100%;
             object-fit: cover;
-            background-color: #e0e7ff;
+            transition: transform 0.5s ease;
+        }
+        
+        .project-card:hover .project-images img {
+            transform: scale(1.1);
+        }
+        
+        .project-badge {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: rgba(14, 165, 233, 0.2);
+            border: 1px solid rgba(14, 165, 233, 0.4);
+            color: var(--cyan);
+            padding: 0.25rem 0.75rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 500;
         }
         
         .project-content {
             padding: 1.5rem;
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
         }
         
         .project-title {
-            font-size: 1.5rem;
-            margin-bottom: 0.8rem;
-            color: var(--secondary);
-        }
-        
-        .project-category {
-            display: inline-block;
-            background-color: #dbeafe;
-            color: var(--primary);
-            padding: 0.3rem 0.8rem;
-            border-radius: 20px;
-            font-size: 0.8rem;
+            font-size: 1.4rem;
+            margin-bottom: 0.75rem;
+            color: white;
             font-weight: 600;
-            margin-bottom: 1rem;
         }
         
         .project-description {
-            color: #64748b;
+            color: var(--text-secondary);
             margin-bottom: 1.5rem;
-            flex-grow: 1;
+            min-height: 80px;
         }
         
-        .project-link {
+        .project-stats {
+            display: flex;
+            justify-content: space-between;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            border-top: 1px solid var(--border);
+            padding-top: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .view-details {
+            color: var(--cyan);
+            font-weight: 500;
             display: flex;
             align-items: center;
-            color: var(--primary);
-            text-decoration: none;
-            font-weight: 600;
-            margin-top: auto;
-            transition: color 0.3s ease;
+            gap: 5px;
+            margin-top: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: fit-content;
         }
         
-        .project-link:hover {
-            color: var(--accent);
-        }
-        
-        .project-link svg {
-            margin-left: 0.5rem;
-            transition: transform 0.3s ease;
-        }
-        
-        .project-link:hover svg {
-            transform: translateX(3px);
-        }
-        
-        .team-section {
-            background-color: var(--primary);
+        .view-details:hover {
             color: white;
-            padding: 4rem 0;
-            text-align: center;
-            border-radius: 12px;
-            margin: 3rem 0;
+            gap: 8px;
         }
         
-        .team-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-        
-        .team-member {
-            background-color: rgba(255, 255, 255, 0.1);
-            padding: 1.5rem;
-            border-radius: 12px;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-        
-        .member-image {
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            object-fit: cover;
-            margin: 0 auto 1rem;
-            border: 3px solid rgba(255, 255, 255, 0.3);
-        }
-        
-        .member-name {
-            font-size: 1.2rem;
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-        }
-        
-        .member-role {
-            font-size: 0.9rem;
-            opacity: 0.9;
-        }
-        
-        .contact-section {
-            text-align: center;
-            padding: 4rem 0;
-            margin: 3rem 0;
-        }
-        
-        .contact-info {
+        /* Community Section */
+        .community-header {
             display: flex;
-            justify-content: center;
-            gap: 3rem;
-            margin-top: 2rem;
-            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
         }
         
-        .contact-item {
-            background-color: var(--light);
+        .posts-container {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+        }
+        
+        .post-card {
+            background: rgba(20, 20, 20, 0.8);
+            border: 1px solid var(--border);
+            border-radius: 16px;
             padding: 1.5rem;
-            border-radius: 12px;
-            min-width: 200px;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            position: relative;
+            backdrop-filter: blur(5px);
         }
         
-        .contact-icon {
-            font-size: 2rem;
-            color: var(--primary);
+        .post-header {
+            display: flex;
+            gap: 1rem;
             margin-bottom: 1rem;
         }
         
-        .contact-title {
-            font-size: 1.2rem;
-            margin-bottom: 0.5rem;
-            color: var(--dark);
-        }
-        
-        .contact-text {
-            color: #64748b;
-        }
-        
-        footer {
-            background-color: var(--dark);
-            color: white;
-            text-align: center;
-            padding: 2rem 0;
-            margin-top: 3rem;
-        }
-        
-        .footer-links {
+        .post-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--cyan), var(--blue));
             display: flex;
+            align-items: center;
             justify-content: center;
-            gap: 2rem;
-            margin: 1.5rem 0;
+            font-weight: bold;
+            color: white;
+            flex-shrink: 0;
         }
         
-        .footer-links a {
-            color: #cbd5e1;
-            text-decoration: none;
-            transition: color 0.3s ease;
+        .post-info {
+            flex: 1;
         }
         
-        .footer-links a:hover {
-            color: var(--accent);
+        .post-author {
+            font-weight: 600;
+            color: white;
         }
         
-        .copyright {
-            color: #94a3b8;
+        .post-time {
+            color: var(--text-secondary);
             font-size: 0.9rem;
         }
         
+        .post-title {
+            font-size: 1.3rem;
+            margin: 0.5rem 0;
+            color: white;
+            font-weight: 600;
+        }
+        
+        .post-content {
+            color: var(--text-secondary);
+            margin: 1rem 0;
+            line-height: 1.7;
+        }
+        
+        .post-images {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+        
+        .post-image {
+            height: 150px;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+        }
+        
+        .post-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .post-actions {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 1.5rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--border);
+        }
+        
+        .post-action {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            color: var(--text-secondary);
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+        
+        .post-action:hover {
+            color: var(--cyan);
+        }
+        
+        .post-edit-actions {
+            display: flex;
+            gap: 1rem;
+            margin-left: auto;
+        }
+        
+        /* Modals */
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+            opacity: 0;
+            pointer-events: none;
+            transition: all 0.3s ease;
+        }
+        
+        .modal.active {
+            opacity: 1;
+            pointer-events: all;
+        }
+        
+        .modal-content {
+            background: var(--gray);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            width: 95%;
+            max-width: 600px;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+            transform: translateY(20px);
+            opacity: 0;
+            transition: all 0.4s ease;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+        }
+        
+        .modal.active .modal-content {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        
+        .modal-header {
+            padding: 1.5rem;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .modal-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: white;
+            font-family: 'Orbitron', sans-serif;
+        }
+        
+        .modal-close {
+            background: none;
+            border: none;
+            color: var(--text-secondary);
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+        
+        .modal-close:hover {
+            color: var(--danger);
+        }
+        
+        .modal-body {
+            padding: 1.5rem;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+            font-weight: 500;
+        }
+        
+        .form-input,
+        .form-textarea {
+            width: 100%;
+            padding: 0.8rem 1.2rem;
+            background: rgba(30, 30, 30, 0.8);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            color: var(--text-primary);
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .form-input:focus,
+        .form-textarea:focus {
+            outline: none;
+            border-color: var(--cyan);
+            box-shadow: 0 0 0 3px rgba(6, 182, 212, 0.3);
+        }
+        
+        .form-textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        .upload-area {
+            border: 2px dashed var(--border);
+            border-radius: 16px;
+            padding: 2rem;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin: 1rem 0;
+        }
+        
+        .upload-area:hover {
+            border-color: var(--cyan);
+            background: rgba(6, 182, 212, 0.05);
+        }
+        
+        .upload-icon {
+            font-size: 2.5rem;
+            color: var(--cyan);
+            margin-bottom: 1rem;
+        }
+        
+        .upload-text {
+            color: var(--text-secondary);
+            margin-bottom: 0.5rem;
+        }
+        
+        .upload-subtext {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+        
+        .uploaded-images {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .uploaded-image {
+            position: relative;
+            height: 100px;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+        }
+        
+        .uploaded-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .remove-image {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background: var(--danger);
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 0.8rem;
+            cursor: pointer;
+            border: 2px solid var(--dark);
+        }
+        
+        .modal-footer {
+            padding: 1rem 1.5rem;
+            border-top: 1px solid var(--border);
+            display: flex;
+            justify-content: flex-end;
+            gap: 1rem;
+        }
+        
+        /* Project Detail Modal */
+        .project-detail-modal .modal-content {
+            max-width: 900px;
+        }
+        
+        .project-detail-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .project-detail-title {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            color: white;
+            font-weight: 700;
+        }
+        
+        .project-detail-category {
+            background: rgba(14, 165, 233, 0.15);
+            color: var(--cyan);
+            padding: 0.25rem 1rem;
+            border-radius: 50px;
+            display: inline-block;
+            font-weight: 500;
+        }
+        
+        .project-detail-content {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+        
+        @media (min-width: 768px) {
+            .project-detail-content {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+        
+        .project-detail-description {
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+        
+        .project-specs {
+            background: rgba(30, 30, 30, 0.8);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 1.5rem;
+        }
+        
+        .specs-title {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            color: var(--cyan);
+            font-weight: 600;
+        }
+        
+        .specs-list {
+            list-style: none;
+        }
+        
+        .specs-list li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid var(--border);
+            color: var(--text-secondary);
+            display: flex;
+        }
+        
+        .specs-list li:before {
+            content: '•';
+            color: var(--cyan);
+            font-weight: bold;
+            margin-right: 10px;
+        }
+        
+        .specs-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .project-media {
+            grid-column: 1 / -1;
+        }
+        
+        .media-title {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: white;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .media-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .media-item {
+            height: 200px;
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+            position: relative;
+        }
+        
+        .media-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+        
+        .media-item:hover img {
+            transform: scale(1.1);
+        }
+        
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+            height: 0;
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+        }
+        
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+        /* Footer */
+        footer {
+            background: rgba(10, 10, 10, 0.95);
+            border-top: 1px solid var(--border);
+            padding: 4rem 0 2rem;
+            margin-top: 5rem;
+        }
+        
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        
+        .footer-section h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            color: white;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+        
+        .footer-section h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background: linear-gradient(to right, var(--cyan), var(--blue));
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .footer-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+        }
+        
+        .footer-links a:hover {
+            color: var(--cyan);
+            transform: translateX(5px);
+        }
+        
+        .footer-links i {
+            color: var(--cyan);
+            font-size: 0.9rem;
+        }
+        
+        .contact-info {
+            list-style: none;
+        }
+        
+        .contact-item {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1.2rem;
+            color: var(--text-secondary);
+        }
+        
+        .contact-icon {
+            color: var(--cyan);
+            font-size: 1.1rem;
+            min-width: 24px;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            margin-top: 2rem;
+            border-top: 1px solid var(--border);
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+        
+        /* Responsive Design */
         @media (max-width: 768px) {
             .hero h1 {
-                font-size: 2.2rem;
+                font-size: 2.5rem;
             }
             
             .hero p {
@@ -360,192 +1037,873 @@
                 display: none;
             }
             
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .quick-access {
+                grid-template-columns: 1fr;
+            }
+            
             .projects-grid {
                 grid-template-columns: 1fr;
             }
             
-            .contact-info {
+            .project-detail-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .community-header {
                 flex-direction: column;
-                gap: 1.5rem;
+                align-items: flex-start;
+                gap: 1rem;
             }
         }
     </style>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
+    <div class="grid-pattern"></div>
+    <div class="scanline"></div>
+    
     <header>
         <div class="container">
-            <nav>
-                <div class="logo">智创<span>电子</span></div>
-                <div class="nav-links">
-                    <a href="#home">首页</a>
-                    <a href="#projects">研究成果</a>
-                    <a href="#team">团队成员</a>
-                    <a href="#contact">联系我们</a>
+            <div class="header-content">
+                <div class="logo">
+                    <div class="logo-icon">NT</div>
+                    <div>
+                        <div class="logo-text">NexTech</div>
+                        <div class="logo-subtext">Electronics Lab</div>
+                    </div>
                 </div>
-            </nav>
+                
+                <nav class="nav-links">
+                    <a href="#research" class="active">Research</a>
+                    <a href="#community">Community</a>
+                    <a href="#projects">Projects</a>
+                    <a href="#about">About Us</a>
+                </nav>
+                
+                <div class="auth-buttons">
+                    <button class="btn btn-outline" id="loginBtn">
+                        <i class="fas fa-sign-in-alt"></i> Login
+                    </button>
+                    <button class="btn btn-primary" id="registerBtn">
+                        <i class="fas fa-user-plus"></i> Register
+                    </button>
+                </div>
+            </div>
         </div>
     </header>
 
-    <section id="home" class="hero">
+    <section class="hero">
         <div class="container">
-            <h1>智创电子工程社</h1>
-            <p>探索电子工程的无限可能，从电路设计到智能系统，我们用创新改变未来</p>
-            <a href="#projects" class="btn">查看最新研究</a>
+            <div class="hero-content">
+                <div class="hero-badge">ADVANCED ELECTRONICS RESEARCH</div>
+                <h1>Engineering the Future Through Innovation</h1>
+                <p>Explore cutting-edge research in embedded systems, AI, IoT, and robotics developed by our engineering team</p>
+                <div class="hero-buttons">
+                    <a href="#research" class="btn btn-primary">
+                        <i class="fas fa-flask"></i> View Research
+                    </a>
+                    <a href="#" class="btn btn-outline" id="postProjectBtn">
+                        <i class="fas fa-plus"></i> Post Project
+                    </a>
+                </div>
+            </div>
+            
+            <div class="quick-access">
+                <div class="quick-access-card" onclick="document.getElementById('postProjectBtn').click()">
+                    <div class="card-icon">
+                        <i class="fas fa-project-diagram"></i>
+                    </div>
+                    <h3>Post Project</h3>
+                    <p>Share your research with the community</p>
+                </div>
+                <div class="quick-access-card" onclick="scrollToSection('research')">
+                    <div class="card-icon">
+                        <i class="fas fa-microchip"></i>
+                    </div>
+                    <h3>Smart Knee Brace</h3>
+                    <p>Multi-sensor fusion system</p>
+                </div>
+                <div class="quick-access-card" onclick="scrollToSection('research')">
+                    <div class="card-icon">
+                        <i class="fas fa-car"></i>
+                    </div>
+                    <h3>Obstacle-Avoiding Car</h3>
+                    <p>Autonomous navigation system</p>
+                </div>
+                <div class="quick-access-card" onclick="scrollToSection('community')">
+                    <div class="card-icon">
+                        <i class="fas fa-comments"></i>
+                    </div>
+                    <h3>Community Forum</h3>
+                    <p>Collaborate with engineers</p>
+                </div>
+            </div>
         </div>
     </section>
 
-    <section id="projects" class="container">
-        <h2 class="section-title">最新研究成果</h2>
+    <section id="research" class="container" style="padding: 5rem 0;">
+        <div class="section-header">
+            <h2 class="section-title">Research Projects</h2>
+            <p class="section-subtitle">Cutting-edge engineering projects developed by our research team</p>
+        </div>
+        
         <div class="projects-grid">
-            <div class="project-card">
-                <div class="project-image" style="background-image: url('https://placehold.co/400x200/3b82f6/ffffff?text=智能护膝系统');"></div>
+            <!-- Project 1: Smart Knee Brace -->
+            <div class="project-card" onclick="showProjectDetail(1)">
+                <div class="project-images">
+                    <img src="https://placehold.co/600x400/0a0a0a/7f7f7f?text=Smart+Knee+Brace" alt="Smart Knee Brace">
+                    <div class="project-badge">WEARABLE TECH</div>
+                </div>
                 <div class="project-content">
-                    <h3 class="project-title">基于多传感器融合的智能护膝系统</h3>
-                    <span class="project-category">可穿戴设备</span>
-                    <p class="project-description">本项目开发了一款集成IMU、压力传感器和弯曲传感器的智能护膝，可实时监测膝关节运动角度、压力分布和活动范围，并通过微型电机实现动态支撑调节，有效预防运动损伤。</p>
-                    <a href="#" class="project-link">查看详情 <i class="fas fa-arrow-right"></i></a>
+                    <h3 class="project-title">Multi-Sensor Fusion Smart Knee Brace System</h3>
+                    <p class="project-description">Developed an intelligent knee brace integrating IMU, pressure sensors, and flex sensors for real-time joint monitoring and dynamic support adjustment to prevent sports injuries.</p>
+                    <div class="project-stats">
+                        <span><i class="fas fa-microchip"></i> STM32F4</span>
+                        <span><i class="fas fa-calendar"></i> Mar 2025</span>
+                    </div>
+                    <div class="view-details">
+                        View Details <i class="fas fa-arrow-right"></i>
+                    </div>
                 </div>
             </div>
-
-            <div class="project-card">
-                <div class="project-image" style="background-image: url('https://placehold.co/400x200/10b981/ffffff?text=物联网环境监测');"></div>
+            
+            <!-- Project 2: Obstacle Avoiding Car -->
+            <div class="project-card" onclick="showProjectDetail(2)">
+                <div class="project-images">
+                    <img src="https://placehold.co/600x400/0a0a0a/7f7f7f?text=Obstacle+Avoiding+Car" alt="Obstacle Avoiding Car">
+                    <div class="project-badge">ROBOTICS</div>
+                </div>
                 <div class="project-content">
-                    <h3 class="project-title">基于ESP32的多参数环境监测系统</h3>
-                    <span class="project-category">物联网</span>
-                    <p class="project-description">构建了一套低成本、低功耗的环境监测节点，可同时采集温度、湿度、PM2.5、CO₂和光照强度数据，通过LoRa无线传输至云端平台，实现校园环境的实时监控与预警。</p>
-                    <a href="#" class="project-link">查看详情 <i class="fas fa-arrow-right"></i></a>
+                    <h3 class="project-title">Smart Obstacle-Avoiding Remote Control Car</h3>
+                    <p class="project-description">Designed an autonomous navigation system using ultrasonic sensors, infrared modules, and computer vision for intelligent path planning and obstacle avoidance in complex environments.</p>
+                    <div class="project-stats">
+                        <span><i class="fas fa-microchip"></i> STM32 + Raspberry Pi</span>
+                        <span><i class="fas fa-calendar"></i> Feb 2025</span>
+                    </div>
+                    <div class="view-details">
+                        View Details <i class="fas fa-arrow-right"></i>
+                    </div>
                 </div>
             </div>
-
-            <div class="project-card">
-                <div class="project-image" style="background-image: url('https://placehold.co/400x200/f59e0b/ffffff?text=AI视觉识别');"></div>
+            
+            <!-- Project 3: AI Chat System -->
+            <div class="project-card" onclick="showProjectDetail(3)">
+                <div class="project-images">
+                    <img src="https://placehold.co/600x400/0a0a0a/7f7f7f?text=AI+Chat+System" alt="AI Chat System">
+                    <div class="project-badge">ARTIFICIAL INTELLIGENCE</div>
+                </div>
                 <div class="project-content">
-                    <h3 class="project-title">基于边缘计算的实时手势识别系统</h3>
-                    <span class="project-category">人工智能</span>
-                    <p class="project-description">利用树莓派4B和摄像头模块，开发了轻量级CNN模型，实现在本地设备上以25FPS速度识别10种手部姿态，可用于无障碍交互和智能家居控制，功耗低于传统云方案80%。</p>
-                    <a href="#" class="project-link">查看详情 <i class="fas fa-arrow-right"></i></a>
+                    <h3 class="project-title">AI Simulation Chat System</h3>
+                    <p class="project-description">Built a transformer-based chatbot system with multi-turn dialogue capability, emotion recognition, and personalized responses that runs locally without internet connection.</p>
+                    <div class="project-stats">
+                        <span><i class="fas fa-microchip"></i> Raspberry Pi 4B</span>
+                        <span><i class="fas fa-calendar"></i> Jan 2025</span>
+                    </div>
+                    <div class="view-details">
+                        View Details <i class="fas fa-arrow-right"></i>
+                    </div>
                 </div>
             </div>
-
-            <div class="project-card">
-                <div class="project-image" style="background-image: url('https://placehold.co/400x200/8b5cf6/ffffff?text=智能充电站');"></div>
-                <div class="project-content">
-                    <h3 class="project-title">太阳能驱动的智能电动车充电站</h3>
-                    <span class="project-category">能源系统</span>
-                    <p class="project-description">设计了一套集成光伏板、锂电池储能和智能充电管理系统的户外充电站，支持多协议充电（Qi、USB-C、DC），通过手机APP实现远程监控和预约充电，提高能源利用效率。</p>
-                    <a href="#" class="project-link">查看详情 <i class="fas fa-arrow-right"></i></a>
+            
+            <!-- Project 4: Automated Bubble Tea Machine -->
+            <div class="project-card" onclick="showProjectDetail(4)">
+                <div class="project-images">
+                    <img src="https://placehold.co/600x400/0a0a0a/7f7f7f?text=Bubble+Tea+Machine" alt="Bubble Tea Machine">
+                    <div class="project-badge">MECHATRONICS</div>
                 </div>
-            </div>
-
-            <div class="project-card">
-                <div class="project-image" style="background-image: url('https://placehold.co/400x200/ef4444/ffffff?text=脑机接口原型');"></div>
                 <div class="project-content">
-                    <h3 class="project-title">基于EEG的简易脑机接口控制系统</h3>
-                    <span class="project-category">生物电子</span>
-                    <p class="project-description">采用OpenBCI开发板采集脑电信号，通过机器学习算法识别专注状态与放松状态，实现通过意念控制LED灯亮度变化，为神经科学教育提供实践平台。</p>
-                    <a href="#" class="project-link">查看详情 <i class="fas fa-arrow-right"></i></a>
-                </div>
-            </div>
-
-            <div class="project-card">
-                <div class="project-image" style="background-image: url('https://placehold.co/400x200/06b6d4/ffffff?text=无人机编队');"></div>
-                <div class="project-content">
-                    <h3 class="project-title">基于STM32的多无人机协同编队系统</h3>
-                    <span class="project-category">嵌入式系统</span>
-                    <p class="project-description">开发了多台无人机之间的无线通信协议与协同控制算法，实现基于GPS的编队飞行、自动避障和路径规划，为未来物流与搜救应用提供技术验证。</p>
-                    <a href="#" class="project-link">查看详情 <i class="fas fa-arrow-right"></i></a>
+                    <h3 class="project-title">Automated Bubble Tea Machine</h3>
+                    <p class="project-description">Engineered a fully automated beverage system with precise ingredient measurement, temperature control, and IoT connectivity for remote ordering via mobile application.</p>
+                    <div class="project-stats">
+                        <span><i class="fas fa-microchip"></i> Arduino Mega2560</span>
+                        <span><i class="fas fa-calendar"></i> Dec 2024</span>
+                    </div>
+                    <div class="view-details">
+                        View Details <i class="fas fa-arrow-right"></i>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="team-section">
-        <div class="container">
-            <h2 class="section-title">我们的团队</h2>
-            <p>由15名来自不同年级的电子工程爱好者组成，涵盖硬件设计、软件开发、系统集成等专业方向</p>
-            <div class="team-grid">
-                <div class="team-member">
-                    <img src="https://placehold.co/120x120/3b82f6/ffffff?text=张" alt="张伟" class="member-image">
-                    <h4 class="member-name">张伟</h4>
-                    <p class="member-role">硬件设计组长</p>
-                </div>
-                <div class="team-member">
-                    <img src="https://placehold.co/120x120/10b981/ffffff?text=李" alt="李娜" class="member-image">
-                    <h4 class="member-name">李娜</h4>
-                    <p class="member-role">嵌入式开发</p>
-                </div>
-                <div class="team-member">
-                    <img src="https://placehold.co/120x120/f59e0b/ffffff?text=王" alt="王浩" class="member-image">
-                    <h4 class="member-name">王浩</h4>
-                    <p class="member-role">AI算法工程师</p>
-                </div>
-                <div class="team-member">
-                    <img src="https://placehold.co/120x120/8b5cf6/ffffff?text=陈" alt="陈思" class="member-image">
-                    <h4 class="member-name">陈思</h4>
-                    <p class="member-role">项目管理</p>
-                </div>
-                <div class="team-member">
-                    <img src="https://placehold.co/120x120/ef4444/ffffff?text=刘" alt="刘洋" class="member-image">
-                    <h4 class="member-name">刘洋</h4>
-                    <p class="member-role">PCB设计</p>
-                </div>
-                <div class="team-member">
-                    <img src="https://placehold.co/120x120/06b6d4/ffffff?text=赵" alt="赵敏" class="member-image">
-                    <h4 class="member-name">赵敏</h4>
-                    <p class="member-role">系统测试</p>
-                </div>
+    <section id="community" class="container" style="padding: 5rem 0;">
+        <div class="community-header">
+            <div class="section-header" style="text-align: left; margin-bottom: 0;">
+                <h2 class="section-title" style="margin-bottom: 0.5rem;">Community Forum</h2>
+                <p class="section-subtitle" style="margin: 0; max-width: 100%;">Share knowledge, collaborate on projects, and discuss engineering challenges</p>
             </div>
+            <button class="btn btn-primary" id="createPostBtn">
+                <i class="fas fa-plus"></i> Create Post
+            </button>
         </div>
-    </section>
-
-    <section id="contact" class="contact-section">
-        <div class="container">
-            <h2 class="section-title">加入我们</h2>
-            <p>无论你是电子工程爱好者，还是对智能硬件充满热情，我们都欢迎你的加入！</p>
-            <div class="contact-info">
-                <div class="contact-item">
-                    <div class="contact-icon">
-                        <i class="fas fa-envelope"></i>
+        
+        <div class="posts-container">
+            <!-- Sample Post 1 -->
+            <div class="post-card">
+                <div class="post-header">
+                    <div class="post-avatar">Z</div>
+                    <div class="post-info">
+                        <div class="post-author">Zhang Wei</div>
+                        <div class="post-time">March 15, 2025 • 2:30 PM</div>
                     </div>
-                    <h3 class="contact-title">邮箱联系</h3>
-                    <p class="contact-text">research@zhi-chuang.org</p>
                 </div>
-                <div class="contact-item">
-                    <div class="contact-icon">
-                        <i class="fas fa-calendar-alt"></i>
+                <h3 class="post-title">STM32 Development Environment Setup Guide</h3>
+                <p class="post-content">Detailed guide for setting up STM32 development environment on Windows and Linux systems. Covers toolchain installation, debugger configuration, and common troubleshooting steps for beginners.</p>
+                
+                <div class="post-images">
+                    <div class="post-image">
+                        <img src="https://placehold.co/300x200/0a0a0a/7f7f7f?text=STM32+Environment" alt="STM32 Setup">
                     </div>
-                    <h3 class="contact-title">招新时间</h3>
-                    <p class="contact-text">每学期初开放申请</p>
                 </div>
-                <div class="contact-item">
-                    <div class="contact-icon">
-                        <i class="fas fa-map-marker-alt"></i>
+                
+                <div class="post-actions">
+                    <div class="post-action">
+                        <i class="fas fa-heart"></i> 24
                     </div>
-                    <h3 class="contact-title">实验室地址</h3>
-                    <p class="contact-text">科技楼B座302电子创新实验室</p>
+                    <div class="post-action">
+                        <i class="fas fa-comment"></i> 8
+                    </div>
+                    <div class="post-edit-actions">
+                        <div class="post-action" onclick="editPost(this)">
+                            <i class="fas fa-edit"></i> Edit
+                        </div>
+                        <div class="post-action" onclick="deletePost(this)">
+                            <i class="fas fa-trash"></i> Delete
+                        </div>
+                    </div>
                 </div>
             </div>
-            <a href="#" class="btn" style="margin-top: 2rem;">申请加入</a>
+            
+            <!-- Sample Post 2 -->
+            <div class="post-card">
+                <div class="post-header">
+                    <div class="post-avatar">L</div>
+                    <div class="post-info">
+                        <div class="post-author">Li Na</div>
+                        <div class="post-time">March 12, 2025 • 9:15 AM</div>
+                    </div>
+                </div>
+                <h3 class="post-title">IMU Sensor Calibration Data Analysis</h3>
+                <p class="post-content">Sharing calibration data for IMU sensors under different temperature conditions. Includes offset values, scale factors, and nonlinearity error analysis with visualization charts. Great reference for anyone working on motion tracking projects.</p>
+                
+                <div class="post-images">
+                    <div class="post-image">
+                        <img src="https://placehold.co/300x200/0a0a0a/7f7f7f?text=IMU+Calibration+1" alt="IMU Data">
+                    </div>
+                    <div class="post-image">
+                        <img src="https://placehold.co/300x200/0a0a0a/7f7f7f?text=IMU+Calibration+2" alt="IMU Analysis">
+                    </div>
+                </div>
+                
+                <div class="post-actions">
+                    <div class="post-action">
+                        <i class="fas fa-heart"></i> 36
+                    </div>
+                    <div class="post-action">
+                        <i class="fas fa-comment"></i> 12
+                    </div>
+                    <div class="post-edit-actions">
+                        <div class="post-action" onclick="editPost(this)">
+                            <i class="fas fa-edit"></i> Edit
+                        </div>
+                        <div class="post-action" onclick="deletePost(this)">
+                            <i class="fas fa-trash"></i> Delete
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
     <footer>
         <div class="container">
-            <div class="logo" style="justify-content: center; margin-bottom: 1rem;">
-                智创<span>电子</span>
+            <div class="footer-grid">
+                <div class="footer-section">
+                    <div class="logo" style="margin-bottom: 1.5rem;">
+                        <div class="logo-icon">NT</div>
+                        <div>
+                            <div class="logo-text">NexTech</div>
+                            <div class="logo-subtext">Electronics Lab</div>
+                        </div>
+                    </div>
+                    <p style="color: var(--text-secondary); line-height: 1.7;">
+                        Pioneering the future of electronics through innovative research and collaborative engineering. Building tomorrow's technology today.
+                    </p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#research"><i class="fas fa-chevron-right"></i> Research Projects</a></li>
+                        <li><a href="#community"><i class="fas fa-chevron-right"></i> Community Forum</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Project Guidelines</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Research Papers</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Contact Us</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Contact Us</h3>
+                    <ul class="contact-info">
+                        <li class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div>research@nextech-lab.org</div>
+                        </li>
+                        <li class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div>Tech Building B-302, Innovation Campus</div>
+                        </li>
+                        <li class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <div>+1 (555) 123-4567</div>
+                        </li>
+                    </ul>
+                </div>
             </div>
-            <p>探索科技边界，创造智能未来</p>
-            <div class="footer-links">
-                <a href="#">关于我们</a>
-                <a href="#">研究成果</a>
-                <a href="#">项目申请</a>
-                <a href="#">联系我们</a>
-                <a href="#">隐私政策</a>
+            
+            <div class="copyright">
+                &copy; 2025 NexTech Electronics Lab. All rights reserved. This platform is for educational and research purposes only.
             </div>
-            <p class="copyright">© 2025 智创电子工程社. 保留所有权利.</p>
         </div>
     </footer>
+
+    <!-- Project Detail Modal -->
+    <div class="modal project-detail-modal" id="projectModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title" id="projectModalTitle">Project Details</h3>
+                <button class="modal-close" onclick="closeModal('projectModal')">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="project-detail-header">
+                    <h2 class="project-detail-title" id="projectDetailTitle">Multi-Sensor Fusion Smart Knee Brace System</h2>
+                    <div class="project-detail-category" id="projectDetailCategory">WEARABLE TECHNOLOGY</div>
+                </div>
+                
+                <div class="project-detail-content">
+                    <div class="project-detail-description" id="projectDetailDescription">
+                        This project developed an intelligent knee brace system that integrates multiple sensors to monitor joint movement and provide dynamic support. The system uses a 9-axis IMU for motion tracking, 6 pressure sensors for force distribution monitoring, and 2 flex sensors for joint angle measurement. Powered by an ESP32 microcontroller, the system processes data in real-time and activates servo motors when dangerous movements are detected, reducing ACL injury risk by 68%.
+                    </div>
+                    
+                    <div class="project-specs">
+                        <h4 class="specs-title">Technical Specifications</h4>
+                        <ul class="specs-list">
+                            <li>Processor: ESP32 Dual-Core 240MHz</li>
+                            <li>Sensors: 9-axis IMU, Pressure Sensor Array, Flex Sensors</li>
+                            <li>Communication: Bluetooth 5.0, WiFi</li>
+                            <li>Battery: 2200mAh LiPo, 48-hour runtime</li>
+                            <li>Sampling Rate: 100Hz real-time monitoring</li>
+                            <li>Weight: 350g (fully assembled)</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="project-specs">
+                        <h4 class="specs-title">Performance Metrics</h4>
+                        <ul class="specs-list">
+                            <li>Accuracy: ±2° (angle), ±0.5N (pressure)</li>
+                            <li>Response Time: <50ms for dynamic support</li>
+                            <li>Data Throughput: 10KB/s via BLE</li>
+                            <li>Operating Temp: -20°C to 60°C</li>
+                            <li>Water Resistance: IP65 rated</li>
+                            <li>Calibration: Auto-calibration on startup</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="project-media">
+                        <h4 class="media-title"><i class="fas fa-images"></i> Project Gallery</h4>
+                        <div class="media-gallery" id="projectGallery">
+                            <div class="media-item">
+                                <img src="https://placehold.co/400x300/0a0a0a/7f7f7f?text=Knee+Brace+Design" alt="Design">
+                            </div>
+                            <div class="media-item">
+                                <img src="https://placehold.co/400x300/0a0a0a/7f7f7f?text=Sensor+Integration" alt="Sensors">
+                            </div>
+                            <div class="media-item">
+                                <img src="https://placehold.co/400x300/0a0a0a/7f7f7f?text=App+Interface" alt="App">
+                            </div>
+                            <div class="media-item">
+                                <img src="https://placehold.co/400x300/0a0a0a/7f7f7f?text=Testing+Session" alt="Testing">
+                            </div>
+                        </div>
+                        
+                        <h4 class="media-title" style="margin-top: 1.5rem;"><i class="fas fa-video"></i> Demonstration Video</h4>
+                        <div class="video-container">
+                            <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-outline" onclick="closeModal('projectModal')">
+                    <i class="fas fa-times"></i> Close
+                </button>
+                <button class="btn btn-primary" id="editProjectBtn">
+                    <i class="fas fa-edit"></i> Edit Project
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Login Modal -->
+    <div class="modal" id="loginModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">User Login</h3>
+                <button class="modal-close" onclick="closeModal('loginModal')">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label class="form-label" for="loginEmail">Email Address</label>
+                    <input type="email" id="loginEmail" class="form-input" placeholder="your.email@example.com" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="loginPassword">Password</label>
+                    <input type="password" id="loginPassword" class="form-input" placeholder="Enter your password" required>
+                </div>
+                <div style="text-align: center; margin: 1.5rem 0;">
+                    <button class="btn btn-primary" style="width: 100%;" onclick="handleLogin()">
+                        <i class="fas fa-sign-in-alt"></i> Sign In
+                    </button>
+                </div>
+                <div style="text-align: center; color: var(--text-secondary);">
+                    Don't have an account? <a href="#" style="color: var(--cyan); text-decoration: none;" onclick="switchToRegister()">Register now</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Register Modal -->
+    <div class="modal" id="registerModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Create Account</h3>
+                <button class="modal-close" onclick="closeModal('registerModal')">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label class="form-label" for="registerName">Full Name</label>
+                    <input type="text" id="registerName" class="form-input" placeholder="John Doe" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="registerEmail">Email Address</label>
+                    <input type="email" id="registerEmail" class="form-input" placeholder="your.email@example.com" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="registerPassword">Password</label>
+                    <input type="password" id="registerPassword" class="form-input" placeholder="Create a strong password" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="registerConfirmPassword">Confirm Password</label>
+                    <input type="password" id="registerConfirmPassword" class="form-input" placeholder="Confirm your password" required>
+                </div>
+                <div style="text-align: center; margin: 1.5rem 0;">
+                    <button class="btn btn-primary" style="width: 100%;" onclick="handleRegister()">
+                        <i class="fas fa-user-plus"></i> Create Account
+                    </button>
+                </div>
+                <div style="text-align: center; color: var(--text-secondary);">
+                    Already have an account? <a href="#" style="color: var(--cyan); text-decoration: none;" onclick="switchToLogin()">Login here</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Post Creation Modal -->
+    <div class="modal" id="postModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title" id="postModalTitle">Create New Post</h3>
+                <button class="modal-close" onclick="closeModal('postModal')">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label class="form-label" for="postTitle">Post Title</label>
+                    <input type="text" id="postTitle" class="form-input" placeholder="Enter a descriptive title for your post" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="postContent">Content</label>
+                    <textarea id="postContent" class="form-textarea" placeholder="Share your project details, research findings, or technical insights here..." required></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">Upload Images</label>
+                    <div class="upload-area" onclick="document.getElementById('imageUpload').click()">
+                        <div class="upload-icon">
+                            <i class="fas fa-cloud-upload-alt"></i>
+                        </div>
+                        <div class="upload-text">Click to upload images</div>
+                        <div class="upload-subtext">Supports JPG, PNG, GIF (max 10MB each)</div>
+                        <input type="file" id="imageUpload" accept="image/*" multiple style="display: none;" onchange="handleImageUpload(this)">
+                    </div>
+                    <div class="uploaded-images" id="uploadedImages"></div>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">Upload Video (Optional)</label>
+                    <div class="upload-area" onclick="document.getElementById('videoUpload').click()">
+                        <div class="upload-icon">
+                            <i class="fas fa-video"></i>
+                        </div>
+                        <div class="upload-text">Click to upload video</div>
+                        <div class="upload-subtext">Supports MP4, MOV (max 100MB)</div>
+                        <input type="file" id="videoUpload" accept="video/*" style="display: none;" onchange="handleVideoUpload(this)">
+                    </div>
+                    <div id="videoPreview" style="margin-top: 1rem; display: none;">
+                        <video controls width="100%" style="border-radius: 12px; border: 1px solid var(--border);"></video>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-outline" onclick="closeModal('postModal')">
+                    <i class="fas fa-times"></i> Cancel
+                </button>
+                <button class="btn btn-primary" onclick="submitPost()">
+                    <i class="fas fa-paper-plane"></i> Post Content
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // DOM Elements
+        const loginBtn = document.getElementById('loginBtn');
+        const registerBtn = document.getElementById('registerBtn');
+        const postProjectBtn = document.getElementById('postProjectBtn');
+        const createPostBtn = document.getElementById('createPostBtn');
+        const editProjectBtn = document.getElementById('editProjectBtn');
+        const loginModal = document.getElementById('loginModal');
+        const registerModal = document.getElementById('registerModal');
+        const projectModal = document.getElementById('projectModal');
+        const postModal = document.getElementById('postModal');
+        
+        // Event Listeners
+        loginBtn.addEventListener('click', () => openModal('loginModal'));
+        registerBtn.addEventListener('click', () => openModal('registerModal'));
+        postProjectBtn.addEventListener('click', () => {
+            // Check if user is logged in
+            if (isUserLoggedIn()) {
+                openModal('postModal');
+                document.getElementById('postModalTitle').textContent = 'Post New Project';
+            } else {
+                openModal('loginModal');
+            }
+        });
+        createPostBtn.addEventListener('click', () => {
+            if (isUserLoggedIn()) {
+                openModal('postModal');
+                document.getElementById('postModalTitle').textContent = 'Create New Post';
+            } else {
+                openModal('loginModal');
+            }
+        });
+        editProjectBtn.addEventListener('click', () => {
+            if (isUserLoggedIn()) {
+                openModal('postModal');
+                document.getElementById('postModalTitle').textContent = 'Edit Project';
+            } else {
+                openModal('loginModal');
+            }
+        });
+        
+        // Modal Functions
+        function openModal(modalId) {
+            document.getElementById(modalId).classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function closeModal(modalId) {
+            document.getElementById(modalId).classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+        
+        function switchToRegister() {
+            closeModal('loginModal');
+            openModal('registerModal');
+        }
+        
+        function switchToLogin() {
+            closeModal('registerModal');
+            openModal('loginModal');
+        }
+        
+        // Project Detail Functions
+        function showProjectDetail(projectId) {
+            const projects = [
+                {
+                    id: 1,
+                    title: "Multi-Sensor Fusion Smart Knee Brace System",
+                    category: "WEARABLE TECHNOLOGY",
+                    description: "This project developed an intelligent knee brace system that integrates multiple sensors to monitor joint movement and provide dynamic support. The system uses a 9-axis IMU for motion tracking, 6 pressure sensors for force distribution monitoring, and 2 flex sensors for joint angle measurement. Powered by an ESP32 microcontroller, the system processes data in real-time and activates servo motors when dangerous movements are detected, reducing ACL injury risk by 68%."
+                },
+                {
+                    id: 2,
+                    title: "Smart Obstacle-Avoiding Remote Control Car",
+                    category: "ROBOTICS & AUTONOMOUS SYSTEMS",
+                    description: "This autonomous vehicle system combines ultrasonic sensors, infrared modules, and computer vision to navigate complex environments. The STM32F4 microcontroller processes sensor data at 50Hz, while the Raspberry Pi handles visual processing using OpenCV. The system implements A* pathfinding algorithm with dynamic obstacle avoidance, achieving 95% success rate in 20m² test environments. The modular design allows for easy expansion with additional sensors or control mechanisms."
+                },
+                {
+                    id: 3,
+                    title: "AI Simulation Chat System",
+                    category: "ARTIFICIAL INTELLIGENCE",
+                    description: "A locally-deployed transformer-based chatbot system that operates without internet connectivity. The model uses knowledge distillation to compress a large pre-trained model into a lightweight 12M parameter architecture that runs efficiently on Raspberry Pi 4B. Features include multi-turn dialogue state tracking, emotion recognition (87% accuracy), and personalized response generation. The system maintains conversation context for up to 15 turns while consuming only 512MB RAM and 20% CPU utilization."
+                },
+                {
+                    id: 4,
+                    title: "Automated Bubble Tea Machine",
+                    category: "MECHATRONICS & IoT",
+                    description: "A fully automated beverage preparation system featuring precise fluid control, temperature management, and IoT connectivity. The machine uses 12 electromagnetic valves controlled by an Arduino Mega2560, with flow sensors ensuring ±0.5ml accuracy. Temperature is maintained within ±1°C using PID controllers and PTC heating elements. The companion mobile app allows remote ordering, payment processing, and real-time status monitoring. Each cup is prepared in 90 seconds with ingredient costs reduced to $0.85 per serving."
+                }
+            ];
+            
+            const project = projects.find(p => p.id === projectId);
+            if (project) {
+                document.getElementById('projectDetailTitle').textContent = project.title;
+                document.getElementById('projectDetailCategory').textContent = project.category;
+                document.getElementById('projectDetailDescription').textContent = project.description;
+                openModal('projectModal');
+            }
+        }
+        
+        // User Authentication (Simulated)
+        function isUserLoggedIn() {
+            // In a real application, this would check session storage or a backend API
+            return localStorage.getItem('userLoggedIn') === 'true';
+        }
+        
+        function handleLogin() {
+            const email = document.getElementById('loginEmail').value;
+            const password = document.getElementById('loginPassword').value;
+            
+            if (email && password) {
+                // Simulate login success
+                localStorage.setItem('userLoggedIn', 'true');
+                localStorage.setItem('currentUser', JSON.stringify({
+                    name: email.split('@')[0],
+                    email: email,
+                    avatar: email.charAt(0).toUpperCase()
+                }));
+                
+                // Update UI
+                updateAuthUI();
+                closeModal('loginModal');
+                alert('Login successful! Welcome to NexTech Lab.');
+            } else {
+                alert('Please enter both email and password');
+            }
+        }
+        
+        function handleRegister() {
+            const name = document.getElementById('registerName').value;
+            const email = document.getElementById('registerEmail').value;
+            const password = document.getElementById('registerPassword').value;
+            const confirmPassword = document.getElementById('registerConfirmPassword').value;
+            
+            if (password !== confirmPassword) {
+                alert('Passwords do not match');
+                return;
+            }
+            
+            if (name && email && password) {
+                // Simulate registration success
+                localStorage.setItem('userLoggedIn', 'true');
+                localStorage.setItem('currentUser', JSON.stringify({
+                    name: name,
+                    email: email,
+                    avatar: name.charAt(0).toUpperCase()
+                }));
+                
+                // Update UI
+                updateAuthUI();
+                closeModal('registerModal');
+                alert('Registration successful! Welcome to the NexTech community.');
+            } else {
+                alert('Please fill in all required fields');
+            }
+        }
+        
+        function updateAuthUI() {
+            const isLoggedIn = isUserLoggedIn();
+            const authButtons = document.querySelector('.auth-buttons');
+            
+            if (isLoggedIn) {
+                const user = JSON.parse(localStorage.getItem('currentUser'));
+                authButtons.innerHTML = `
+                    <button class="btn btn-outline" id="createPostBtn">
+                        <i class="fas fa-plus"></i> New Post
+                    </button>
+                    <div class="user-avatar" style="background: linear-gradient(135deg, var(--cyan), var(--blue));">${user.avatar}</div>
+                `;
+                // Re-add event listeners
+                document.getElementById('createPostBtn').addEventListener('click', () => {
+                    openModal('postModal');
+                    document.getElementById('postModalTitle').textContent = 'Create New Post';
+                });
+            } else {
+                authButtons.innerHTML = `
+                    <button class="btn btn-outline" id="loginBtn">
+                        <i class="fas fa-sign-in-alt"></i> Login
+                    </button>
+                    <button class="btn btn-primary" id="registerBtn">
+                        <i class="fas fa-user-plus"></i> Register
+                    </button>
+                `;
+                // Re-add event listeners
+                document.getElementById('loginBtn').addEventListener('click', () => openModal('loginModal'));
+                document.getElementById('registerBtn').addEventListener('click', () => openModal('registerModal'));
+            }
+        }
+        
+        // Post Functions
+        function handleImageUpload(input) {
+            const files = input.files;
+            const uploadedImages = document.getElementById('uploadedImages');
+            
+            for (let i = 0; i < files.length; i++) {
+                const file = files[i];
+                if (file.type.startsWith('image/')) {
+                    const reader = new FileReader();
+                    reader.onload = function(e) {
+                        const imageUrl = e.target.result;
+                        const imageDiv = document.createElement('div');
+                        imageDiv.className = 'uploaded-image';
+                        imageDiv.innerHTML = `
+                            <img src="${imageUrl}" alt="Uploaded">
+                            <div class="remove-image" onclick="removeImage(this)">
+                                <i class="fas fa-times"></i>
+                            </div>
+                        `;
+                        uploadedImages.appendChild(imageDiv);
+                    };
+                    reader.readAsDataURL(file);
+                }
+            }
+        }
+        
+        function handleVideoUpload(input) {
+            const file = input.files[0];
+            if (file && file.type.startsWith('video/')) {
+                const videoPreview = document.getElementById('videoPreview');
+                const videoElement = videoPreview.querySelector('video');
+                videoElement.src = URL.createObjectURL(file);
+                videoPreview.style.display = 'block';
+            }
+        }
+        
+        function removeImage(element) {
+            element.parentElement.remove();
+        }
+        
+        function submitPost() {
+            const title = document.getElementById('postTitle').value;
+            const content = document.getElementById('postContent').value;
+            
+            if (!title || !content) {
+                alert('Please enter both title and content');
+                return;
+            }
+            
+            // In a real application, this would send data to a backend server
+            alert('Post submitted successfully!');
+            closeModal('postModal');
+            
+            // Clear form
+            document.getElementById('postTitle').value = '';
+            document.getElementById('postContent').value = '';
+            document.getElementById('uploadedImages').innerHTML = '';
+            document.getElementById('videoPreview').style.display = 'none';
+        }
+        
+        function editPost(element) {
+            if (isUserLoggedIn()) {
+                const postCard = element.closest('.post-card');
+                const title = postCard.querySelector('.post-title').textContent;
+                const content = postCard.querySelector('.post-content').textContent;
+                
+                document.getElementById('postTitle').value = title;
+                document.getElementById('postContent').value = content;
+                openModal('postModal');
+                document.getElementById('postModalTitle').textContent = 'Edit Post';
+            } else {
+                openModal('loginModal');
+            }
+        }
+        
+        function deletePost(element) {
+            if (confirm('Are you sure you want to delete this post?')) {
+                element.closest('.post-card').remove();
+            }
+        }
+        
+        // Navigation Functions
+        function scrollToSection(sectionId) {
+            const section = document.getElementById(sectionId);
+            if (section) {
+                section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        }
+        
+        // Initialize UI
+        document.addEventListener('DOMContentLoaded', function() {
+            updateAuthUI();
+            
+            // Auto-login for demo purposes
+            if (!localStorage.getItem('userLoggedIn')) {
+                setTimeout(() => {
+                    const demoUser = {
+                        name: 'Demo User',
+                        email: 'demo@nextech-lab.org',
+                        avatar: 'D'
+                    };
+                    localStorage.setItem('userLoggedIn', 'true');
+                    localStorage.setItem('currentUser', JSON.stringify(demoUser));
+                    updateAuthUI();
+                    console.log('Auto-logged in as demo user for demonstration purposes');
+                }, 1000);
+            }
+        });
+        
+        // Close modals when clicking outside
+        window.addEventListener('click', function(event) {
+            const modals = ['loginModal', 'registerModal', 'projectModal', 'postModal'];
+            modals.forEach(modalId => {
+                const modal = document.getElementById(modalId);
+                if (modal.classList.contains('active') && event.target === modal) {
+                    closeModal(modalId);
+                }
+            });
+        });
+        
+        // Close modals with ESC key
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                const modals = ['loginModal', 'registerModal', 'projectModal', 'postModal'];
+                modals.forEach(modalId => {
+                    const modal = document.getElementById(modalId);
+                    if (modal.classList.contains('active')) {
+                        closeModal(modalId);
+                    }
+                });
+            }
+        });
+    </script>
 </body>
 </html>
 
