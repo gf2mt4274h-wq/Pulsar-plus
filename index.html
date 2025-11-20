@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NexTech Electronics Lab | Innovation in Engineering</title>
+    <title>PulsarTech Labs | Innovation in Engineering</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
@@ -28,13 +28,11 @@
             --shadow-strong: rgba(6, 182, 212, 0.3);
             --glow: 0 0 15px rgba(6, 182, 212, 0.4);
         }
-        
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-        
         body {
             background: linear-gradient(135deg, var(--darker), var(--dark));
             color: var(--text-primary);
@@ -44,7 +42,6 @@
             font-family: 'Montserrat', sans-serif;
             position: relative;
         }
-        
         body::before {
             content: '';
             position: fixed;
@@ -57,7 +54,6 @@
                 radial-gradient(circle at 90% 80%, rgba(14, 165, 233, 0.05) 0%, transparent 20%);
             z-index: -1;
         }
-        
         .grid-pattern {
             position: fixed;
             top: 0;
@@ -71,7 +67,6 @@
             z-index: -1;
             opacity: 0.4;
         }
-        
         .scanline {
             position: fixed;
             top: 0;
@@ -88,7 +83,6 @@
             pointer-events: none;
             z-index: -1;
         }
-        
         @keyframes scanline {
             0% {
                 background-position: 0 0;
@@ -97,14 +91,64 @@
                 background-position: 0 100vh;
             }
         }
-        
+        .neutron-star-logo {
+            width: 42px;
+            height: 42px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .neutron-star-logo .core {
+            width: 16px;
+            height: 16px;
+            background: white;
+            border-radius: 50%;
+            position: relative;
+            z-index: 3;
+        }
+        .neutron-star-logo .ring {
+            position: absolute;
+            border: 2px solid white;
+            border-radius: 50%;
+            opacity: 0.8;
+        }
+        .neutron-star-logo .ring-1 {
+            width: 28px;
+            height: 28px;
+            top: 7px;
+            left: 7px;
+        }
+        .neutron-star-logo .ring-2 {
+            width: 42px;
+            height: 42px;
+            top: 0;
+            left: 0;
+        }
+        .neutron-star-logo .beam {
+            position: absolute;
+            width: 3px;
+            height: 25px;
+            background: white;
+            transform-origin: bottom center;
+            opacity: 0.9;
+        }
+        .neutron-star-logo .beam-1 {
+            transform: rotate(-30deg);
+            left: 21px;
+            bottom: 11px;
+        }
+        .neutron-star-logo .beam-2 {
+            transform: rotate(30deg);
+            right: 11px;
+            bottom: 3px;
+        }
         .container {
             width: 90%;
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 15px;
         }
-        
         /* Header Styles */
         header {
             background: rgba(10, 10, 10, 0.9);
@@ -117,23 +161,20 @@
             z-index: 1000;
             padding: 1rem 0;
         }
-        
         .header-content {
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
-        
         .logo {
             display: flex;
             align-items: center;
             gap: 12px;
         }
-        
         .logo-icon {
             width: 42px;
             height: 42px;
-            background: linear-gradient(135deg, var(--cyan), var(--blue));
+            background: transparent;
             border-radius: 10px;
             display: flex;
             align-items: center;
@@ -141,9 +182,7 @@
             font-weight: bold;
             font-size: 1.3rem;
             color: white;
-            box-shadow: var(--glow);
         }
-        
         .logo-text {
             font-size: 1.6rem;
             font-weight: 700;
@@ -153,19 +192,16 @@
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
-        
         .logo-subtext {
             font-size: 0.8rem;
             color: var(--text-secondary);
             margin-top: -2px;
             font-family: 'Montserrat', sans-serif;
         }
-        
         .nav-links {
             display: flex;
             gap: 2rem;
         }
-        
         .nav-links a {
             color: var(--text-secondary);
             text-decoration: none;
@@ -175,12 +211,10 @@
             padding: 0.5rem 0;
             transition: all 0.3s ease;
         }
-        
         .nav-links a:hover,
         .nav-links a.active {
             color: var(--cyan);
         }
-        
         .nav-links a::after {
             content: '';
             position: absolute;
@@ -191,18 +225,15 @@
             background: linear-gradient(to right, var(--cyan), var(--blue));
             transition: width 0.3s ease;
         }
-        
         .nav-links a:hover::after,
         .nav-links a.active::after {
             width: 100%;
         }
-        
         .auth-buttons {
             display: flex;
             gap: 1rem;
             align-items: center;
         }
-        
         .btn {
             display: inline-block;
             padding: 0.6rem 1.5rem;
@@ -218,29 +249,24 @@
             gap: 8px;
             font-family: 'Montserrat', sans-serif;
         }
-        
         .btn-primary {
             background: linear-gradient(135deg, var(--cyan), var(--blue));
             color: white;
             box-shadow: var(--glow);
         }
-        
         .btn-primary:hover {
             transform: translateY(-2px);
             box-shadow: 0 0 20px rgba(6, 182, 212, 0.6);
         }
-        
         .btn-outline {
             background: transparent;
             border: 1.5px solid var(--border);
             color: var(--text-primary);
         }
-        
         .btn-outline:hover {
             background: rgba(30, 41, 59, 0.3);
             border-color: var(--cyan);
         }
-        
         .user-avatar {
             width: 36px;
             height: 36px;
@@ -254,7 +280,37 @@
             cursor: pointer;
             position: relative;
         }
-        
+        .user-menu {
+            position: absolute;
+            top: calc(100% + 10px);
+            right: 0;
+            background: var(--gray);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            width: 200px;
+            padding: 1rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            z-index: 1001;
+            display: none;
+        }
+        .user-avatar:hover .user-menu {
+            display: block;
+        }
+        .user-menu-item {
+            padding: 0.5rem 0;
+            color: var(--text-secondary);
+            transition: color 0.3s ease;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .user-menu-item:hover {
+            color: var(--cyan);
+        }
+        .user-menu-item i {
+            width: 20px;
+        }
         /* Hero Section */
         .hero {
             text-align: center;
@@ -262,14 +318,12 @@
             position: relative;
             overflow: hidden;
         }
-        
         .hero-content {
             max-width: 800px;
             margin: 0 auto;
             position: relative;
             z-index: 10;
         }
-        
         .hero-badge {
             display: inline-block;
             padding: 0.3rem 1rem;
@@ -280,7 +334,6 @@
             font-weight: 500;
             color: var(--cyan);
         }
-        
         .hero h1 {
             font-size: 3.5rem;
             font-weight: 800;
@@ -292,7 +345,6 @@
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
-        
         .hero p {
             font-size: 1.3rem;
             color: var(--text-secondary);
@@ -301,14 +353,12 @@
             margin-left: auto;
             margin-right: auto;
         }
-        
         .hero-buttons {
             display: flex;
             gap: 1rem;
             justify-content: center;
             margin-top: 2rem;
         }
-        
         .quick-access {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -317,7 +367,6 @@
             margin: 4rem auto 0;
             padding: 2rem;
         }
-        
         .quick-access-card {
             background: rgba(20, 20, 20, 0.7);
             border: 1px solid var(--border);
@@ -329,13 +378,11 @@
             position: relative;
             overflow: hidden;
         }
-        
         .quick-access-card:hover {
             transform: translateY(-5px);
             border-color: var(--cyan);
             background: rgba(10, 30, 40, 0.8);
         }
-        
         .quick-access-card::before {
             content: '';
             position: absolute;
@@ -347,11 +394,9 @@
             opacity: 0;
             transition: opacity 0.3s ease;
         }
-        
         .quick-access-card:hover::before {
             opacity: 1;
         }
-        
         .card-icon {
             width: 60px;
             height: 60px;
@@ -365,24 +410,20 @@
             color: white;
             box-shadow: var(--glow);
         }
-        
         .quick-access-card h3 {
             font-size: 1.3rem;
             margin-bottom: 0.5rem;
             color: white;
         }
-        
         .quick-access-card p {
             color: var(--text-secondary);
             font-size: 0.95rem;
         }
-        
         /* Research Projects Section */
         .section-header {
             text-align: center;
             margin-bottom: 3.5rem;
         }
-        
         .section-title {
             font-size: 2.5rem;
             font-weight: 700;
@@ -393,21 +434,18 @@
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
-        
         .section-subtitle {
             color: var(--text-secondary);
             max-width: 700px;
             margin: 0 auto;
             font-size: 1.1rem;
         }
-        
         .projects-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
             margin-bottom: 4rem;
         }
-        
         .project-card {
             background: rgba(20, 20, 20, 0.8);
             border: 1px solid var(--border);
@@ -417,30 +455,25 @@
             position: relative;
             backdrop-filter: blur(5px);
         }
-        
         .project-card:hover {
             transform: translateY(-5px);
             border-color: var(--cyan);
             box-shadow: 0 20px 30px rgba(0, 0, 0, 0.3);
         }
-        
         .project-images {
             height: 200px;
             position: relative;
             overflow: hidden;
         }
-        
         .project-images img {
             width: 100%;
             height: 100%;
             object-fit: cover;
             transition: transform 0.5s ease;
         }
-        
         .project-card:hover .project-images img {
             transform: scale(1.1);
         }
-        
         .project-badge {
             position: absolute;
             top: 1rem;
@@ -453,24 +486,20 @@
             font-size: 0.85rem;
             font-weight: 500;
         }
-        
         .project-content {
             padding: 1.5rem;
         }
-        
         .project-title {
             font-size: 1.4rem;
             margin-bottom: 0.75rem;
             color: white;
             font-weight: 600;
         }
-        
         .project-description {
             color: var(--text-secondary);
             margin-bottom: 1.5rem;
             min-height: 80px;
         }
-        
         .project-stats {
             display: flex;
             justify-content: space-between;
@@ -480,7 +509,6 @@
             padding-top: 1rem;
             margin-top: 1rem;
         }
-        
         .view-details {
             color: var(--cyan);
             font-weight: 500;
@@ -492,12 +520,10 @@
             transition: all 0.3s ease;
             width: fit-content;
         }
-        
         .view-details:hover {
             color: white;
             gap: 8px;
         }
-        
         /* Community Section */
         .community-header {
             display: flex;
@@ -505,13 +531,11 @@
             align-items: center;
             margin-bottom: 2rem;
         }
-        
         .posts-container {
             display: grid;
             grid-template-columns: 1fr;
             gap: 1.5rem;
         }
-        
         .post-card {
             background: rgba(20, 20, 20, 0.8);
             border: 1px solid var(--border);
@@ -520,13 +544,11 @@
             position: relative;
             backdrop-filter: blur(5px);
         }
-        
         .post-header {
             display: flex;
             gap: 1rem;
             margin-bottom: 1rem;
         }
-        
         .post-avatar {
             width: 40px;
             height: 40px;
@@ -539,54 +561,45 @@
             color: white;
             flex-shrink: 0;
         }
-        
         .post-info {
             flex: 1;
         }
-        
         .post-author {
             font-weight: 600;
             color: white;
         }
-        
         .post-time {
             color: var(--text-secondary);
             font-size: 0.9rem;
         }
-        
         .post-title {
             font-size: 1.3rem;
             margin: 0.5rem 0;
             color: white;
             font-weight: 600;
         }
-        
         .post-content {
             color: var(--text-secondary);
             margin: 1rem 0;
             line-height: 1.7;
         }
-        
         .post-images {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
             gap: 1rem;
             margin: 1rem 0;
         }
-        
         .post-image {
             height: 150px;
             border-radius: 12px;
             overflow: hidden;
             border: 1px solid var(--border);
         }
-        
         .post-image img {
             width: 100%;
             height: 100%;
             object-fit: cover;
         }
-        
         .post-actions {
             display: flex;
             justify-content: space-between;
@@ -594,7 +607,6 @@
             padding-top: 1rem;
             border-top: 1px solid var(--border);
         }
-        
         .post-action {
             display: flex;
             align-items: center;
@@ -603,17 +615,183 @@
             cursor: pointer;
             transition: color 0.3s ease;
         }
-        
         .post-action:hover {
             color: var(--cyan);
         }
-        
         .post-edit-actions {
             display: flex;
             gap: 1rem;
             margin-left: auto;
         }
-        
+        /* Blog Section */
+        .blog-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+        .blog-card {
+            background: rgba(20, 20, 20, 0.8);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            overflow: hidden;
+            margin-bottom: 1.5rem;
+            backdrop-filter: blur(5px);
+        }
+        .blog-image {
+            height: 250px;
+            width: 100%;
+            overflow: hidden;
+        }
+        .blog-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        .blog-card:hover .blog-image img {
+            transform: scale(1.05);
+        }
+        .blog-content {
+            padding: 1.5rem;
+        }
+        .blog-category {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            background: rgba(14, 165, 233, 0.15);
+            border: 1px solid rgba(14, 165, 233, 0.4);
+            color: var(--cyan);
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin-bottom: 0.75rem;
+        }
+        .blog-title {
+            font-size: 1.5rem;
+            margin-bottom: 0.75rem;
+            color: white;
+            font-weight: 700;
+        }
+        .blog-excerpt {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+        }
+        .blog-meta {
+            display: flex;
+            justify-content: space-between;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        .blog-stats {
+            display: flex;
+            gap: 1.5rem;
+        }
+        .blog-stat {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        .blog-read-more {
+            color: var(--cyan);
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            width: fit-content;
+        }
+        .blog-read-more:hover {
+            color: white;
+            gap: 8px;
+        }
+        .comment-section {
+            border-top: 1px solid var(--border);
+            padding-top: 1.5rem;
+            margin-top: 1.5rem;
+        }
+        .comments-list {
+            margin-bottom: 1.5rem;
+        }
+        .comment {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--border);
+        }
+        .comment:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        .comment-avatar {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--cyan), var(--blue));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: white;
+            flex-shrink: 0;
+        }
+        .comment-content {
+            flex: 1;
+        }
+        .comment-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.25rem;
+        }
+        .comment-author {
+            font-weight: 600;
+            color: white;
+        }
+        .comment-time {
+            color: var(--text-secondary);
+            font-size: 0.8rem;
+        }
+        .comment-text {
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+        .comment-form {
+            display: flex;
+            gap: 1rem;
+        }
+        .comment-input {
+            flex: 1;
+            padding: 0.75rem 1rem;
+            background: rgba(30, 30, 30, 0.8);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            color: var(--text-primary);
+            font-family: 'Montserrat', sans-serif;
+        }
+        .comment-input:focus {
+            outline: none;
+            border-color: var(--cyan);
+        }
+        .comment-submit {
+            background: linear-gradient(135deg, var(--cyan), var(--blue));
+            color: white;
+            border: none;
+            border-radius: 12px;
+            padding: 0 1.5rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .comment-submit:hover {
+            transform: translateY(-2px);
+        }
+        .comment-submit:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+        }
         /* Modals */
         .modal {
             position: fixed;
@@ -630,12 +808,10 @@
             pointer-events: none;
             transition: all 0.3s ease;
         }
-        
         .modal.active {
             opacity: 1;
             pointer-events: all;
         }
-        
         .modal-content {
             background: var(--gray);
             border: 1px solid var(--border);
@@ -650,12 +826,10 @@
             transition: all 0.4s ease;
             box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
         }
-        
         .modal.active .modal-content {
             transform: translateY(0);
             opacity: 1;
         }
-        
         .modal-header {
             padding: 1.5rem;
             border-bottom: 1px solid var(--border);
@@ -663,14 +837,12 @@
             justify-content: space-between;
             align-items: center;
         }
-        
         .modal-title {
             font-size: 1.5rem;
             font-weight: 700;
             color: white;
             font-family: 'Orbitron', sans-serif;
         }
-        
         .modal-close {
             background: none;
             border: none;
@@ -679,26 +851,21 @@
             cursor: pointer;
             transition: color 0.3s ease;
         }
-        
         .modal-close:hover {
             color: var(--danger);
         }
-        
         .modal-body {
             padding: 1.5rem;
         }
-        
         .form-group {
             margin-bottom: 1.5rem;
         }
-        
         .form-label {
             display: block;
             margin-bottom: 0.5rem;
             color: var(--text-primary);
             font-weight: 500;
         }
-        
         .form-input,
         .form-textarea {
             width: 100%;
@@ -711,19 +878,16 @@
             font-size: 1rem;
             transition: all 0.3s ease;
         }
-        
         .form-input:focus,
         .form-textarea:focus {
             outline: none;
             border-color: var(--cyan);
             box-shadow: 0 0 0 3px rgba(6, 182, 212, 0.3);
         }
-        
         .form-textarea {
             min-height: 150px;
             resize: vertical;
         }
-        
         .upload-area {
             border: 2px dashed var(--border);
             border-radius: 16px;
@@ -733,35 +897,29 @@
             transition: all 0.3s ease;
             margin: 1rem 0;
         }
-        
         .upload-area:hover {
             border-color: var(--cyan);
             background: rgba(6, 182, 212, 0.05);
         }
-        
         .upload-icon {
             font-size: 2.5rem;
             color: var(--cyan);
             margin-bottom: 1rem;
         }
-        
         .upload-text {
             color: var(--text-secondary);
             margin-bottom: 0.5rem;
         }
-        
         .upload-subtext {
             color: var(--text-secondary);
             font-size: 0.9rem;
         }
-        
         .uploaded-images {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
             gap: 1rem;
             margin-top: 1rem;
         }
-        
         .uploaded-image {
             position: relative;
             height: 100px;
@@ -769,13 +927,11 @@
             overflow: hidden;
             border: 1px solid var(--border);
         }
-        
         .uploaded-image img {
             width: 100%;
             height: 100%;
             object-fit: cover;
         }
-        
         .remove-image {
             position: absolute;
             top: -5px;
@@ -792,7 +948,6 @@
             cursor: pointer;
             border: 2px solid var(--dark);
         }
-        
         .modal-footer {
             padding: 1rem 1.5rem;
             border-top: 1px solid var(--border);
@@ -800,24 +955,20 @@
             justify-content: flex-end;
             gap: 1rem;
         }
-        
         /* Project Detail Modal */
         .project-detail-modal .modal-content {
             max-width: 900px;
         }
-        
         .project-detail-header {
             text-align: center;
             margin-bottom: 2rem;
         }
-        
         .project-detail-title {
             font-size: 2rem;
             margin-bottom: 0.5rem;
             color: white;
             font-weight: 700;
         }
-        
         .project-detail-category {
             background: rgba(14, 165, 233, 0.15);
             color: var(--cyan);
@@ -826,65 +977,54 @@
             display: inline-block;
             font-weight: 500;
         }
-        
         .project-detail-content {
             display: grid;
             grid-template-columns: 1fr;
             gap: 2rem;
         }
-        
         @media (min-width: 768px) {
             .project-detail-content {
                 grid-template-columns: 1fr 1fr;
             }
         }
-        
         .project-detail-description {
             color: var(--text-secondary);
             line-height: 1.8;
             margin-bottom: 1.5rem;
         }
-        
         .project-specs {
             background: rgba(30, 30, 30, 0.8);
             border: 1px solid var(--border);
             border-radius: 16px;
             padding: 1.5rem;
         }
-        
         .specs-title {
             font-size: 1.2rem;
             margin-bottom: 1rem;
             color: var(--cyan);
             font-weight: 600;
         }
-        
         .specs-list {
             list-style: none;
         }
-        
         .specs-list li {
             padding: 0.5rem 0;
             border-bottom: 1px solid var(--border);
             color: var(--text-secondary);
             display: flex;
         }
-        
         .specs-list li:before {
             content: '•';
             color: var(--cyan);
             font-weight: bold;
             margin-right: 10px;
         }
-        
         .specs-list li:last-child {
             border-bottom: none;
         }
-        
         .project-media {
             grid-column: 1 / -1;
         }
-        
         .media-title {
             font-size: 1.3rem;
             margin-bottom: 1rem;
@@ -893,14 +1033,12 @@
             align-items: center;
             gap: 10px;
         }
-        
         .media-gallery {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 1rem;
             margin-bottom: 1.5rem;
         }
-        
         .media-item {
             height: 200px;
             border-radius: 16px;
@@ -908,18 +1046,15 @@
             border: 1px solid var(--border);
             position: relative;
         }
-        
         .media-item img {
             width: 100%;
             height: 100%;
             object-fit: cover;
             transition: transform 0.3s ease;
         }
-        
         .media-item:hover img {
             transform: scale(1.1);
         }
-        
         .video-container {
             position: relative;
             padding-bottom: 56.25%; /* 16:9 aspect ratio */
@@ -928,7 +1063,6 @@
             overflow: hidden;
             border: 1px solid var(--border);
         }
-        
         .video-container iframe {
             position: absolute;
             top: 0;
@@ -937,7 +1071,6 @@
             height: 100%;
             border: none;
         }
-        
         /* Footer */
         footer {
             background: rgba(10, 10, 10, 0.95);
@@ -945,13 +1078,11 @@
             padding: 4rem 0 2rem;
             margin-top: 5rem;
         }
-        
         .footer-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 2rem;
         }
-        
         .footer-section h3 {
             font-size: 1.3rem;
             margin-bottom: 1.5rem;
@@ -959,7 +1090,6 @@
             position: relative;
             padding-bottom: 0.5rem;
         }
-        
         .footer-section h3::after {
             content: '';
             position: absolute;
@@ -969,15 +1099,12 @@
             height: 2px;
             background: linear-gradient(to right, var(--cyan), var(--blue));
         }
-        
         .footer-links {
             list-style: none;
         }
-        
         .footer-links li {
             margin-bottom: 0.8rem;
         }
-        
         .footer-links a {
             color: var(--text-secondary);
             text-decoration: none;
@@ -986,34 +1113,28 @@
             gap: 10px;
             transition: all 0.3s ease;
         }
-        
         .footer-links a:hover {
             color: var(--cyan);
             transform: translateX(5px);
         }
-        
         .footer-links i {
             color: var(--cyan);
             font-size: 0.9rem;
         }
-        
         .contact-info {
             list-style: none;
         }
-        
         .contact-item {
             display: flex;
             gap: 1rem;
             margin-bottom: 1.2rem;
             color: var(--text-secondary);
         }
-        
         .contact-icon {
             color: var(--cyan);
             font-size: 1.1rem;
             min-width: 24px;
         }
-        
         .copyright {
             text-align: center;
             padding-top: 2rem;
@@ -1022,38 +1143,30 @@
             color: var(--text-secondary);
             font-size: 0.95rem;
         }
-        
         /* Responsive Design */
         @media (max-width: 768px) {
             .hero h1 {
                 font-size: 2.5rem;
             }
-            
             .hero p {
                 font-size: 1.1rem;
             }
-            
             .nav-links {
                 display: none;
             }
-            
             .hero-buttons {
                 flex-direction: column;
                 align-items: center;
             }
-            
             .quick-access {
                 grid-template-columns: 1fr;
             }
-            
             .projects-grid {
                 grid-template-columns: 1fr;
             }
-            
             .project-detail-content {
                 grid-template-columns: 1fr;
             }
-            
             .community-header {
                 flex-direction: column;
                 align-items: flex-start;
@@ -1065,25 +1178,30 @@
 <body>
     <div class="grid-pattern"></div>
     <div class="scanline"></div>
-    
     <header>
         <div class="container">
             <div class="header-content">
                 <div class="logo">
-                    <div class="logo-icon">NT</div>
+                    <div class="logo-icon">
+                        <div class="neutron-star-logo">
+                            <div class="core"></div>
+                            <div class="ring ring-1"></div>
+                            <div class="ring ring-2"></div>
+                            <div class="beam beam-1"></div>
+                            <div class="beam beam-2"></div>
+                        </div>
+                    </div>
                     <div>
-                        <div class="logo-text">NexTech</div>
-                        <div class="logo-subtext">Electronics Lab</div>
+                        <div class="logo-text">PulsarTech</div>
+                        <div class="logo-subtext">Engineering Labs</div>
                     </div>
                 </div>
-                
                 <nav class="nav-links">
                     <a href="#research" class="active">Research</a>
+                    <a href="#blogs">Blogs</a>
                     <a href="#community">Community</a>
-                    <a href="#projects">Projects</a>
                     <a href="#about">About Us</a>
                 </nav>
-                
                 <div class="auth-buttons">
                     <button class="btn btn-outline" id="loginBtn">
                         <i class="fas fa-sign-in-alt"></i> Login
@@ -1095,7 +1213,6 @@
             </div>
         </div>
     </header>
-
     <section class="hero">
         <div class="container">
             <div class="hero-content">
@@ -1111,14 +1228,13 @@
                     </a>
                 </div>
             </div>
-            
             <div class="quick-access">
-                <div class="quick-access-card" onclick="document.getElementById('postProjectBtn').click()">
+                <div class="quick-access-card" onclick="document.getElementById('postBlogBtn').click()">
                     <div class="card-icon">
-                        <i class="fas fa-project-diagram"></i>
+                        <i class="fas fa-blog"></i>
                     </div>
-                    <h3>Post Project</h3>
-                    <p>Share your research with the community</p>
+                    <h3>Write a Blog</h3>
+                    <p>Share your insights with the community</p>
                 </div>
                 <div class="quick-access-card" onclick="scrollToSection('research')">
                     <div class="card-icon">
@@ -1134,23 +1250,21 @@
                     <h3>Obstacle-Avoiding Car</h3>
                     <p>Autonomous navigation system</p>
                 </div>
-                <div class="quick-access-card" onclick="scrollToSection('community')">
+                <div class="quick-access-card" onclick="scrollToSection('blogs')">
                     <div class="card-icon">
-                        <i class="fas fa-comments"></i>
+                        <i class="fas fa-rss"></i>
                     </div>
-                    <h3>Community Forum</h3>
-                    <p>Collaborate with engineers</p>
+                    <h3>Tech Blogs</h3>
+                    <p>Latest engineering insights</p>
                 </div>
             </div>
         </div>
     </section>
-
     <section id="research" class="container" style="padding: 5rem 0;">
         <div class="section-header">
             <h2 class="section-title">Research Projects</h2>
             <p class="section-subtitle">Cutting-edge engineering projects developed by our research team</p>
         </div>
-        
         <div class="projects-grid">
             <!-- Project 1: Smart Knee Brace -->
             <div class="project-card" onclick="showProjectDetail(1)">
@@ -1170,7 +1284,6 @@
                     </div>
                 </div>
             </div>
-            
             <!-- Project 2: Obstacle Avoiding Car -->
             <div class="project-card" onclick="showProjectDetail(2)">
                 <div class="project-images">
@@ -1189,7 +1302,6 @@
                     </div>
                 </div>
             </div>
-            
             <!-- Project 3: AI Chat System -->
             <div class="project-card" onclick="showProjectDetail(3)">
                 <div class="project-images">
@@ -1208,7 +1320,6 @@
                     </div>
                 </div>
             </div>
-            
             <!-- Project 4: Automated Bubble Tea Machine -->
             <div class="project-card" onclick="showProjectDetail(4)">
                 <div class="project-images">
@@ -1229,7 +1340,147 @@
             </div>
         </div>
     </section>
-
+    <section id="blogs" class="container" style="padding: 5rem 0;">
+        <div class="blog-header">
+            <div class="section-header" style="text-align: left; margin-bottom: 0;">
+                <h2 class="section-title" style="margin-bottom: 0.5rem;">Tech Blogs</h2>
+                <p class="section-subtitle" style="margin: 0; max-width: 100%;">Latest engineering insights and technical articles from our community</p>
+            </div>
+            <button class="btn btn-primary" id="postBlogBtn">
+                <i class="fas fa-plus"></i> New Blog
+            </button>
+        </div>
+        <div class="blogs-container">
+            <!-- Blog 1 -->
+            <div class="blog-card">
+                <div class="blog-image">
+                    <img src="https://placehold.co/800x400/0a0a0a/7f7f7f?text=Embedded+Systems" alt="Embedded Systems">
+                </div>
+                <div class="blog-content">
+                    <span class="blog-category">Embedded Systems</span>
+                    <h3 class="blog-title">The Future of Embedded AI: TinyML and Edge Computing</h3>
+                    <p class="blog-excerpt">Exploring how machine learning models are being optimized to run efficiently on resource-constrained microcontrollers, enabling intelligent edge devices with minimal power consumption and latency. This article covers the latest frameworks, optimization techniques, and real-world applications.</p>
+                    <div class="blog-meta">
+                        <div class="blog-author">By Alex Chen</div>
+                        <div class="blog-stats">
+                            <div class="blog-stat">
+                                <i class="fas fa-heart"></i> <span class="likes-count">42</span>
+                            </div>
+                            <div class="blog-stat">
+                                <i class="fas fa-comment"></i> <span class="comments-count">15</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="blog-read-more">
+                        Read More <i class="fas fa-arrow-right"></i>
+                    </div>
+                    <div class="comment-section">
+                        <div class="comments-list">
+                            <div class="comment">
+                                <div class="comment-avatar">R</div>
+                                <div class="comment-content">
+                                    <div class="comment-header">
+                                        <div class="comment-author">Ryan Thompson</div>
+                                        <div class="comment-time">2 days ago</div>
+                                    </div>
+                                    <div class="comment-text">Great insights on TinyML! I've been working on similar projects and found the TensorFlow Lite Micro framework particularly useful for deploying models on Cortex-M devices.</div>
+                                </div>
+                            </div>
+                            <div class="comment">
+                                <div class="comment-avatar">J</div>
+                                <div class="comment-content">
+                                    <div class="comment-header">
+                                        <div class="comment-author">Jasmine Lee</div>
+                                        <div class="comment-time">5 days ago</div>
+                                    </div>
+                                    <div class="comment-text">Would love to see a follow-up article discussing power optimization techniques for always-on edge AI devices!</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="comment-form">
+                            <input type="text" class="comment-input" placeholder="Add a comment..." disabled>
+                            <button class="comment-submit" disabled><i class="fas fa-paper-plane"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Blog 2 -->
+            <div class="blog-card">
+                <div class="blog-image">
+                    <img src="https://placehold.co/800x400/0a0a0a/7f7f7f?text=Hardware+Security" alt="Hardware Security">
+                </div>
+                <div class="blog-content">
+                    <span class="blog-category">Security</span>
+                    <h3 class="blog-title">Hardware Security: Protecting IoT Devices from Physical Attacks</h3>
+                    <p class="blog-excerpt">A comprehensive guide to hardware security techniques that protect IoT devices from physical tampering, side-channel attacks, and reverse engineering. We explore secure boot processes, hardware-based encryption, and practical countermeasures for resource-limited devices.</p>
+                    <div class="blog-meta">
+                        <div class="blog-author">By Maya Rodriguez</div>
+                        <div class="blog-stats">
+                            <div class="blog-stat">
+                                <i class="fas fa-heart"></i> <span class="likes-count">38</span>
+                            </div>
+                            <div class="blog-stat">
+                                <i class="fas fa-comment"></i> <span class="comments-count">23</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="blog-read-more">
+                        Read More <i class="fas fa-arrow-right"></i>
+                    </div>
+                    <div class="comment-section">
+                        <div class="comments-list">
+                            <div class="comment">
+                                <div class="comment-avatar">S</div>
+                                <div class="comment-content">
+                                    <div class="comment-header">
+                                        <div class="comment-author">Sam Wilson</div>
+                                        <div class="comment-time">1 day ago</div>
+                                    </div>
+                                    <div class="comment-text">This is exactly what I needed for my thesis research! The section on glitch attacks was particularly enlightening. Have you considered writing about quantum-resistant cryptography for embedded systems next?</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="comment-form">
+                            <input type="text" class="comment-input" placeholder="Add a comment..." disabled>
+                            <button class="comment-submit" disabled><i class="fas fa-paper-plane"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Blog 3 -->
+            <div class="blog-card">
+                <div class="blog-image">
+                    <img src="https://placehold.co/800x400/0a0a0a/7f7f7f?text=Robotics+SLAM" alt="Robotics SLAM">
+                </div>
+                <div class="blog-content">
+                    <span class="blog-category">Robotics</span>
+                    <h3 class="blog-title">SLAM Algorithms for Small Autonomous Robots: A Practical Guide</h3>
+                    <p class="blog-excerpt">Breaking down complex Simultaneous Localization and Mapping (SLAM) algorithms for small autonomous robots with limited computational resources. This guide covers sensor fusion techniques, optimization strategies, and implementation tips for hobbyists and professionals alike.</p>
+                    <div class="blog-meta">
+                        <div class="blog-author">By David Kim</div>
+                        <div class="blog-stats">
+                            <div class="blog-stat">
+                                <i class="fas fa-heart"></i> <span class="likes-count">56</span>
+                            </div>
+                            <div class="blog-stat">
+                                <i class="fas fa-comment"></i> <span class="comments-count">31</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="blog-read-more">
+                        Read More <i class="fas fa-arrow-right"></i>
+                    </div>
+                    <div class="comment-section">
+                        <div class="comments-list"></div>
+                        <div class="comment-form">
+                            <input type="text" class="comment-input" placeholder="Add a comment..." disabled>
+                            <button class="comment-submit" disabled><i class="fas fa-paper-plane"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
     <section id="community" class="container" style="padding: 5rem 0;">
         <div class="community-header">
             <div class="section-header" style="text-align: left; margin-bottom: 0;">
@@ -1240,7 +1491,6 @@
                 <i class="fas fa-plus"></i> Create Post
             </button>
         </div>
-        
         <div class="posts-container">
             <!-- Sample Post 1 -->
             <div class="post-card">
@@ -1253,13 +1503,11 @@
                 </div>
                 <h3 class="post-title">STM32 Development Environment Setup Guide</h3>
                 <p class="post-content">Detailed guide for setting up STM32 development environment on Windows and Linux systems. Covers toolchain installation, debugger configuration, and common troubleshooting steps for beginners.</p>
-                
                 <div class="post-images">
                     <div class="post-image">
                         <img src="https://placehold.co/300x200/0a0a0a/7f7f7f?text=STM32+Environment" alt="STM32 Setup">
                     </div>
                 </div>
-                
                 <div class="post-actions">
                     <div class="post-action">
                         <i class="fas fa-heart"></i> 24
@@ -1277,7 +1525,6 @@
                     </div>
                 </div>
             </div>
-            
             <!-- Sample Post 2 -->
             <div class="post-card">
                 <div class="post-header">
@@ -1289,7 +1536,6 @@
                 </div>
                 <h3 class="post-title">IMU Sensor Calibration Data Analysis</h3>
                 <p class="post-content">Sharing calibration data for IMU sensors under different temperature conditions. Includes offset values, scale factors, and nonlinearity error analysis with visualization charts. Great reference for anyone working on motion tracking projects.</p>
-                
                 <div class="post-images">
                     <div class="post-image">
                         <img src="https://placehold.co/300x200/0a0a0a/7f7f7f?text=IMU+Calibration+1" alt="IMU Data">
@@ -1298,7 +1544,6 @@
                         <img src="https://placehold.co/300x200/0a0a0a/7f7f7f?text=IMU+Calibration+2" alt="IMU Analysis">
                     </div>
                 </div>
-                
                 <div class="post-actions">
                     <div class="post-action">
                         <i class="fas fa-heart"></i> 36
@@ -1318,34 +1563,39 @@
             </div>
         </div>
     </section>
-
     <footer>
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-section">
                     <div class="logo" style="margin-bottom: 1.5rem;">
-                        <div class="logo-icon">NT</div>
+                        <div class="logo-icon">
+                            <div class="neutron-star-logo">
+                                <div class="core"></div>
+                                <div class="ring ring-1"></div>
+                                <div class="ring ring-2"></div>
+                                <div class="beam beam-1"></div>
+                                <div class="beam beam-2"></div>
+                            </div>
+                        </div>
                         <div>
-                            <div class="logo-text">NexTech</div>
-                            <div class="logo-subtext">Electronics Lab</div>
+                            <div class="logo-text">PulsarTech</div>
+                            <div class="logo-subtext">Engineering Labs</div>
                         </div>
                     </div>
                     <p style="color: var(--text-secondary); line-height: 1.7;">
                         Pioneering the future of electronics through innovative research and collaborative engineering. Building tomorrow's technology today.
                     </p>
                 </div>
-                
                 <div class="footer-section">
                     <h3>Quick Links</h3>
                     <ul class="footer-links">
                         <li><a href="#research"><i class="fas fa-chevron-right"></i> Research Projects</a></li>
+                        <li><a href="#blogs"><i class="fas fa-chevron-right"></i> Tech Blogs</a></li>
                         <li><a href="#community"><i class="fas fa-chevron-right"></i> Community Forum</a></li>
                         <li><a href="#"><i class="fas fa-chevron-right"></i> Project Guidelines</a></li>
-                        <li><a href="#"><i class="fas fa-chevron-right"></i> Research Papers</a></li>
                         <li><a href="#"><i class="fas fa-chevron-right"></i> Contact Us</a></li>
                     </ul>
                 </div>
-                
                 <div class="footer-section">
                     <h3>Contact Us</h3>
                     <ul class="contact-info">
@@ -1353,7 +1603,7 @@
                             <div class="contact-icon">
                                 <i class="fas fa-envelope"></i>
                             </div>
-                            <div>research@nextech-lab.org</div>
+                            <div>research@pulsartech-labs.org</div>
                         </li>
                         <li class="contact-item">
                             <div class="contact-icon">
@@ -1370,13 +1620,11 @@
                     </ul>
                 </div>
             </div>
-            
             <div class="copyright">
-                &copy; 2025 NexTech Electronics Lab. All rights reserved. This platform is for educational and research purposes only.
+                &copy; 2025 PulsarTech Engineering Labs. All rights reserved. This platform is for educational and research purposes only.
             </div>
         </div>
     </footer>
-
     <!-- Project Detail Modal -->
     <div class="modal project-detail-modal" id="projectModal">
         <div class="modal-content">
@@ -1391,12 +1639,10 @@
                     <h2 class="project-detail-title" id="projectDetailTitle">Multi-Sensor Fusion Smart Knee Brace System</h2>
                     <div class="project-detail-category" id="projectDetailCategory">WEARABLE TECHNOLOGY</div>
                 </div>
-                
                 <div class="project-detail-content">
                     <div class="project-detail-description" id="projectDetailDescription">
                         This project developed an intelligent knee brace system that integrates multiple sensors to monitor joint movement and provide dynamic support. The system uses a 9-axis IMU for motion tracking, 6 pressure sensors for force distribution monitoring, and 2 flex sensors for joint angle measurement. Powered by an ESP32 microcontroller, the system processes data in real-time and activates servo motors when dangerous movements are detected, reducing ACL injury risk by 68%.
                     </div>
-                    
                     <div class="project-specs">
                         <h4 class="specs-title">Technical Specifications</h4>
                         <ul class="specs-list">
@@ -1408,7 +1654,6 @@
                             <li>Weight: 350g (fully assembled)</li>
                         </ul>
                     </div>
-                    
                     <div class="project-specs">
                         <h4 class="specs-title">Performance Metrics</h4>
                         <ul class="specs-list">
@@ -1420,7 +1665,6 @@
                             <li>Calibration: Auto-calibration on startup</li>
                         </ul>
                     </div>
-                    
                     <div class="project-media">
                         <h4 class="media-title"><i class="fas fa-images"></i> Project Gallery</h4>
                         <div class="media-gallery" id="projectGallery">
@@ -1437,7 +1681,6 @@
                                 <img src="https://placehold.co/400x300/0a0a0a/7f7f7f?text=Testing+Session" alt="Testing">
                             </div>
                         </div>
-                        
                         <h4 class="media-title" style="margin-top: 1.5rem;"><i class="fas fa-video"></i> Demonstration Video</h4>
                         <div class="video-container">
                             <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
@@ -1455,7 +1698,6 @@
             </div>
         </div>
     </div>
-
     <!-- Login Modal -->
     <div class="modal" id="loginModal">
         <div class="modal-content">
@@ -1485,7 +1727,6 @@
             </div>
         </div>
     </div>
-
     <!-- Register Modal -->
     <div class="modal" id="registerModal">
         <div class="modal-content">
@@ -1523,7 +1764,6 @@
             </div>
         </div>
     </div>
-
     <!-- Post Creation Modal -->
     <div class="modal" id="postModal">
         <div class="modal-content">
@@ -1542,7 +1782,6 @@
                     <label class="form-label" for="postContent">Content</label>
                     <textarea id="postContent" class="form-textarea" placeholder="Share your project details, research findings, or technical insights here..." required></textarea>
                 </div>
-                
                 <div class="form-group">
                     <label class="form-label">Upload Images</label>
                     <div class="upload-area" onclick="document.getElementById('imageUpload').click()">
@@ -1555,7 +1794,6 @@
                     </div>
                     <div class="uploaded-images" id="uploadedImages"></div>
                 </div>
-                
                 <div class="form-group">
                     <label class="form-label">Upload Video (Optional)</label>
                     <div class="upload-area" onclick="document.getElementById('videoUpload').click()">
@@ -1581,11 +1819,56 @@
             </div>
         </div>
     </div>
-
+    <!-- Blog Creation Modal -->
+    <div class="modal" id="blogModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title" id="blogModalTitle">Create New Blog</h3>
+                <button class="modal-close" onclick="closeModal('blogModal')">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label class="form-label" for="blogTitle">Blog Title</label>
+                    <input type="text" id="blogTitle" class="form-input" placeholder="Enter a catchy title for your blog" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="blogCategory">Category</label>
+                    <select id="blogCategory" class="form-input" required>
+                        <option value="">Select a category</option>
+                        <option value="Embedded Systems">Embedded Systems</option>
+                        <option value="AI & ML">AI & Machine Learning</option>
+                        <option value="Robotics">Robotics</option>
+                        <option value="IoT">IoT</option>
+                        <option value="Security">Security</option>
+                        <option value="Hardware Design">Hardware Design</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="blogImage">Featured Image URL</label>
+                    <input type="url" id="blogImage" class="form-input" placeholder="https://example.com/image.jpg" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="blogContent">Blog Content</label>
+                    <textarea id="blogContent" class="form-textarea" placeholder="Write your blog content here..." required></textarea>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-outline" onclick="closeModal('blogModal')">
+                    <i class="fas fa-times"></i> Cancel
+                </button>
+                <button class="btn btn-primary" onclick="submitBlog()">
+                    <i class="fas fa-paper-plane"></i> Publish Blog
+                </button>
+            </div>
+        </div>
+    </div>
     <script>
         // DOM Elements
         const loginBtn = document.getElementById('loginBtn');
         const registerBtn = document.getElementById('registerBtn');
+        const postBlogBtn = document.getElementById('postBlogBtn');
         const postProjectBtn = document.getElementById('postProjectBtn');
         const createPostBtn = document.getElementById('createPostBtn');
         const editProjectBtn = document.getElementById('editProjectBtn');
@@ -1593,12 +1876,20 @@
         const registerModal = document.getElementById('registerModal');
         const projectModal = document.getElementById('projectModal');
         const postModal = document.getElementById('postModal');
+        const blogModal = document.getElementById('blogModal');
         
         // Event Listeners
         loginBtn.addEventListener('click', () => openModal('loginModal'));
         registerBtn.addEventListener('click', () => openModal('registerModal'));
+        postBlogBtn.addEventListener('click', () => {
+            if (isUserLoggedIn()) {
+                openModal('blogModal');
+                document.getElementById('blogModalTitle').textContent = 'Create New Blog';
+            } else {
+                openModal('loginModal');
+            }
+        });
         postProjectBtn.addEventListener('click', () => {
-            // Check if user is logged in
             if (isUserLoggedIn()) {
                 openModal('postModal');
                 document.getElementById('postModalTitle').textContent = 'Post New Project';
@@ -1672,7 +1963,6 @@
                     description: "A fully automated beverage preparation system featuring precise fluid control, temperature management, and IoT connectivity. The machine uses 12 electromagnetic valves controlled by an Arduino Mega2560, with flow sensors ensuring ±0.5ml accuracy. Temperature is maintained within ±1°C using PID controllers and PTC heating elements. The companion mobile app allows remote ordering, payment processing, and real-time status monitoring. Each cup is prepared in 90 seconds with ingredient costs reduced to $0.85 per serving."
                 }
             ];
-            
             const project = projects.find(p => p.id === projectId);
             if (project) {
                 document.getElementById('projectDetailTitle').textContent = project.title;
@@ -1682,9 +1972,8 @@
             }
         }
         
-        // User Authentication (Simulated)
+        // User Authentication
         function isUserLoggedIn() {
-            // In a real application, this would check session storage or a backend API
             return localStorage.getItem('userLoggedIn') === 'true';
         }
         
@@ -1693,7 +1982,7 @@
             const password = document.getElementById('loginPassword').value;
             
             if (email && password) {
-                // Simulate login success
+                // In a real application, this would validate against a backend
                 localStorage.setItem('userLoggedIn', 'true');
                 localStorage.setItem('currentUser', JSON.stringify({
                     name: email.split('@')[0],
@@ -1701,10 +1990,9 @@
                     avatar: email.charAt(0).toUpperCase()
                 }));
                 
-                // Update UI
                 updateAuthUI();
                 closeModal('loginModal');
-                alert('Login successful! Welcome to NexTech Lab.');
+                alert('Login successful! Welcome to PulsarTech Labs.');
             } else {
                 alert('Please enter both email and password');
             }
@@ -1722,7 +2010,7 @@
             }
             
             if (name && email && password) {
-                // Simulate registration success
+                // In a real app, this would register with a backend
                 localStorage.setItem('userLoggedIn', 'true');
                 localStorage.setItem('currentUser', JSON.stringify({
                     name: name,
@@ -1730,10 +2018,9 @@
                     avatar: name.charAt(0).toUpperCase()
                 }));
                 
-                // Update UI
                 updateAuthUI();
                 closeModal('registerModal');
-                alert('Registration successful! Welcome to the NexTech community.');
+                alert('Registration successful! Welcome to PulsarTech community.');
             } else {
                 alert('Please fill in all required fields');
             }
@@ -1749,13 +2036,20 @@
                     <button class="btn btn-outline" id="createPostBtn">
                         <i class="fas fa-plus"></i> New Post
                     </button>
-                    <div class="user-avatar" style="background: linear-gradient(135deg, var(--cyan), var(--blue));">${user.avatar}</div>
+                    <div class="user-avatar" style="background: linear-gradient(135deg, var(--cyan), var(--blue));">${user.avatar}
+                        <div class="user-menu">
+                            <div class="user-menu-item" onclick="openModal('blogModal')">
+                                <i class="fas fa-blog"></i> Write Blog
+                            </div>
+                            <div class="user-menu-item" onclick="showProfile()">
+                                <i class="fas fa-user"></i> Profile
+                            </div>
+                            <div class="user-menu-item" onclick="logoutUser()">
+                                <i class="fas fa-sign-out-alt"></i> Logout
+                            </div>
+                        </div>
+                    </div>
                 `;
-                // Re-add event listeners
-                document.getElementById('createPostBtn').addEventListener('click', () => {
-                    openModal('postModal');
-                    document.getElementById('postModalTitle').textContent = 'Create New Post';
-                });
             } else {
                 authButtons.innerHTML = `
                     <button class="btn btn-outline" id="loginBtn">
@@ -1765,10 +2059,61 @@
                         <i class="fas fa-user-plus"></i> Register
                     </button>
                 `;
-                // Re-add event listeners
-                document.getElementById('loginBtn').addEventListener('click', () => openModal('loginModal'));
-                document.getElementById('registerBtn').addEventListener('click', () => openModal('registerModal'));
             }
+            
+            // Rebind event listeners
+            document.querySelectorAll('#loginBtn').forEach(btn => {
+                btn.addEventListener('click', () => openModal('loginModal'));
+            });
+            document.querySelectorAll('#registerBtn').forEach(btn => {
+                btn.addEventListener('click', () => openModal('registerModal'));
+            });
+            document.querySelectorAll('#createPostBtn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    if (isUserLoggedIn()) {
+                        openModal('postModal');
+                        document.getElementById('postModalTitle').textContent = 'Create New Post';
+                    } else {
+                        openModal('loginModal');
+                    }
+                });
+            });
+            
+            // Enable comment forms for logged in users
+            document.querySelectorAll('.comment-form').forEach(form => {
+                const input = form.querySelector('.comment-input');
+                const button = form.querySelector('.comment-submit');
+                if (isLoggedIn) {
+                    input.disabled = false;
+                    button.disabled = false;
+                    button.addEventListener('click', () => addComment(form));
+                }
+            });
+            
+            // Enable like buttons for logged in users
+            document.querySelectorAll('.blog-stat i.fa-heart').forEach(heart => {
+                if (isLoggedIn) {
+                    heart.style.cursor = 'pointer';
+                    heart.addEventListener('click', function() {
+                        const countElement = this.nextElementSibling;
+                        let count = parseInt(countElement.textContent);
+                        count++;
+                        countElement.textContent = count;
+                        this.style.color = '#ef4444';
+                    });
+                }
+            });
+        }
+        
+        function logoutUser() {
+            localStorage.removeItem('userLoggedIn');
+            localStorage.removeItem('currentUser');
+            updateAuthUI();
+            alert('You have been logged out successfully.');
+        }
+        
+        function showProfile() {
+            alert('Profile feature coming soon!');
         }
         
         // Post Functions
@@ -1820,7 +2165,7 @@
                 return;
             }
             
-            // In a real application, this would send data to a backend server
+            // In a real app, this would send data to a backend
             alert('Post submitted successfully!');
             closeModal('postModal');
             
@@ -1852,6 +2197,122 @@
             }
         }
         
+        // Blog Functions
+        function submitBlog() {
+            const title = document.getElementById('blogTitle').value;
+            const category = document.getElementById('blogCategory').value;
+            const imageUrl = document.getElementById('blogImage').value;
+            const content = document.getElementById('blogContent').value;
+            
+            if (!title || !category || !imageUrl || !content) {
+                alert('Please fill in all required fields');
+                return;
+            }
+            
+            // Create new blog card
+            const blogsContainer = document.querySelector('.blogs-container');
+            const newBlogCard = document.createElement('div');
+            newBlogCard.className = 'blog-card';
+            newBlogCard.innerHTML = `
+                <div class="blog-image">
+                    <img src="${imageUrl}" alt="${title}">
+                </div>
+                <div class="blog-content">
+                    <span class="blog-category">${category}</span>
+                    <h3 class="blog-title">${title}</h3>
+                    <p class="blog-excerpt">${content.substring(0, 200)}${content.length > 200 ? '...' : ''}</p>
+                    <div class="blog-meta">
+                        <div class="blog-author">By ${JSON.parse(localStorage.getItem('currentUser')).name}</div>
+                        <div class="blog-stats">
+                            <div class="blog-stat">
+                                <i class="fas fa-heart"></i> <span class="likes-count">0</span>
+                            </div>
+                            <div class="blog-stat">
+                                <i class="fas fa-comment"></i> <span class="comments-count">0</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="blog-read-more">
+                        Read More <i class="fas fa-arrow-right"></i>
+                    </div>
+                    <div class="comment-section">
+                        <div class="comments-list"></div>
+                        <div class="comment-form">
+                            <input type="text" class="comment-input" placeholder="Add a comment..." disabled>
+                            <button class="comment-submit" disabled><i class="fas fa-paper-plane"></i></button>
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            // Insert new blog at the beginning
+            blogsContainer.insertBefore(newBlogCard, blogsContainer.firstChild);
+            
+            // Enable comment form if user is logged in
+            if (isUserLoggedIn()) {
+                const commentForm = newBlogCard.querySelector('.comment-form');
+                const commentInput = commentForm.querySelector('.comment-input');
+                const commentButton = commentForm.querySelector('.comment-submit');
+                commentInput.disabled = false;
+                commentButton.disabled = false;
+                commentButton.addEventListener('click', () => addComment(commentForm));
+            }
+            
+            // Enable like button if user is logged in
+            if (isUserLoggedIn()) {
+                const likeButton = newBlogCard.querySelector('.blog-stat i.fa-heart');
+                likeButton.style.cursor = 'pointer';
+                likeButton.addEventListener('click', function() {
+                    const countElement = this.nextElementSibling;
+                    let count = parseInt(countElement.textContent);
+                    count++;
+                    countElement.textContent = count;
+                    this.style.color = '#ef4444';
+                });
+            }
+            
+            alert('Blog published successfully!');
+            closeModal('blogModal');
+            
+            // Clear form
+            document.getElementById('blogTitle').value = '';
+            document.getElementById('blogCategory').value = '';
+            document.getElementById('blogImage').value = '';
+            document.getElementById('blogContent').value = '';
+        }
+        
+        function addComment(commentForm) {
+            const commentInput = commentForm.querySelector('.comment-input');
+            const commentText = commentInput.value.trim();
+            
+            if (!commentText) return;
+            
+            const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+            const commentsList = commentForm.previousElementSibling;
+            
+            const newComment = document.createElement('div');
+            newComment.className = 'comment';
+            newComment.innerHTML = `
+                <div class="comment-avatar">${currentUser.name.charAt(0).toUpperCase()}</div>
+                <div class="comment-content">
+                    <div class="comment-header">
+                        <div class="comment-author">${currentUser.name}</div>
+                        <div class="comment-time">Just now</div>
+                    </div>
+                    <div class="comment-text">${commentText}</div>
+                </div>
+            `;
+            
+            commentsList.appendChild(newComment);
+            
+            // Update comment count
+            const commentCount = commentForm.closest('.blog-content').querySelector('.comments-count');
+            commentCount.textContent = parseInt(commentCount.textContent) + 1;
+            
+            // Clear input
+            commentInput.value = '';
+        }
+        
         // Navigation Functions
         function scrollToSection(sectionId) {
             const section = document.getElementById(sectionId);
@@ -1863,29 +2324,14 @@
         // Initialize UI
         document.addEventListener('DOMContentLoaded', function() {
             updateAuthUI();
-            
-            // Auto-login for demo purposes
-            if (!localStorage.getItem('userLoggedIn')) {
-                setTimeout(() => {
-                    const demoUser = {
-                        name: 'Demo User',
-                        email: 'demo@nextech-lab.org',
-                        avatar: 'D'
-                    };
-                    localStorage.setItem('userLoggedIn', 'true');
-                    localStorage.setItem('currentUser', JSON.stringify(demoUser));
-                    updateAuthUI();
-                    console.log('Auto-logged in as demo user for demonstration purposes');
-                }, 1000);
-            }
         });
         
         // Close modals when clicking outside
         window.addEventListener('click', function(event) {
-            const modals = ['loginModal', 'registerModal', 'projectModal', 'postModal'];
+            const modals = ['loginModal', 'registerModal', 'projectModal', 'postModal', 'blogModal'];
             modals.forEach(modalId => {
                 const modal = document.getElementById(modalId);
-                if (modal.classList.contains('active') && event.target === modal) {
+                if (modal && modal.classList.contains('active') && event.target === modal) {
                     closeModal(modalId);
                 }
             });
@@ -1894,10 +2340,10 @@
         // Close modals with ESC key
         document.addEventListener('keydown', function(event) {
             if (event.key === 'Escape') {
-                const modals = ['loginModal', 'registerModal', 'projectModal', 'postModal'];
+                const modals = ['loginModal', 'registerModal', 'projectModal', 'postModal', 'blogModal'];
                 modals.forEach(modalId => {
                     const modal = document.getElementById(modalId);
-                    if (modal.classList.contains('active')) {
+                    if (modal && modal.classList.contains('active')) {
                         closeModal(modalId);
                     }
                 });
